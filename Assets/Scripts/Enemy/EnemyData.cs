@@ -14,4 +14,8 @@ public class EnemyData : ScriptableObject
     public float rangeDamage = 1f;
     public float attackInterval = 5f;
     public float range = 3f;
+
+    [Header("EXP Drop Settings")]
+    public int baseExpReward = 1;
+    public float expMultiplier = 1f; // Individual base multiplier (e.g. Slime = 1.0, Elite = 2.5)
 }

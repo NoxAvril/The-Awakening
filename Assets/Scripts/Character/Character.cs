@@ -7,10 +7,13 @@ public class Character : MonoBehaviour
     private PlayerHealth playerHealth;
     private PlayerMovement playerMovement;
 
-    private float damageMultiplier;
-    private float attackSpeedMultiplier;
-    private float critChance;
-    private float critMultiplier;
+    // Active Combat Stats
+    private float damageMultiplier = 1f;
+    private float attackSpeedMultiplier = 1f;
+    private float critChance = 0f;       // Base stored as percentage (0 to 100) or normalized (0 to 1)
+    private float critMultiplier = 2f;
+    private float aoeBonus = 0f;
+    private float moveSpeedBonus = 0f;
 
     public void Awake()
     {
@@ -19,14 +22,22 @@ public class Character : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
 
         string selectedCharacterName = PlayerPrefs.GetString("SelectedCharacter", "");
+        bool characterFound = false;
 
         for (int i = 0; i < characters.Length; i++)
         {
-            if (characters[i].characterName == selectedCharacterName)
+            if (characters[i] != null && characters[i].characterName == selectedCharacterName)
             {
                 SelectCharacter(i);
+                characterFound = true;
                 break;
             }
+        }
+
+        // Fallback to default index 0 if PlayerPrefs selection wasn't found
+        if (!characterFound && characters.Length > 0)
+        {
+            SelectCharacter(0);
         }
     }
 
@@ -36,66 +47,43 @@ public class Character : MonoBehaviour
             return;
 
         CharacterData selectedCharacter = characters[characterIndex];
-        playerHealth.setMaxHealth(selectedCharacter.maxHealth);
-        playerMovement.setMoveSpeed(selectedCharacter.movespeed);
+        
+        if (playerHealth != null) playerHealth.setMaxHealth(selectedCharacter.maxHealth);
+        if (playerMovement != null) playerMovement.setMoveSpeed(selectedCharacter.movespeed);
 
         damageMultiplier = selectedCharacter.damageMultiplier;
         attackSpeedMultiplier = selectedCharacter.attackSpeedMultiplier;
         critChance = selectedCharacter.critChance;
         critMultiplier = selectedCharacter.critMultiplier;
 
-        if (selectedCharacter.startingWeapon != null)
+        if (selectedCharacter.startingWeapon != null && weaponManager != null)
         {
             Weapon weapon = Instantiate(selectedCharacter.startingWeapon, transform);
             weaponManager.EquipStartingWeapon(weapon);
         }
     }
 
-    public CharacterData getCharacterData(int characterIndex)
-    {
-        if (characterIndex < 0 || characterIndex >= characters.Length)
-            return null;
+    // --- Stat Getters ---
+    public float getDamageMultiplier() => damageMultiplier;
+    public float getAttackSpeedMultiplier() => attackSpeedMultiplier;
+    public float getCritChance() => critChance;
+    public float getCritMultiplier() => critMultiplier;
+    public float getAOEBonus() => aoeBonus;
+    public float getMoveSpeedBonus() => moveSpeedBonus;
 
-        return characters[characterIndex];
-    }
+    // --- Stat Modifiers (Used by Upgrades) ---
+    public void AddDamageMultiplier(float amount) => damageMultiplier += amount;
+    public void AddAttackSpeedMultiplier(float amount) => attackSpeedMultiplier += amount;
+    public void addCritChance(float chance) => critChance += chance;
+    public void addCritMultiplier(float multiplier) => critMultiplier += multiplier;
+    public void AddAOEBonus(float amount) => aoeBonus += amount;
 
-    public float getDamageMultiplier()
+    public void AddMoveSpeedBonus(float amount)
     {
-        return damageMultiplier;
-    }
-
-    public float getAttackSpeedMultiplier()
-    {
-        return attackSpeedMultiplier;
-    }
-
-    public float getCritChance()
-    {
-        return critChance;
-    }
-
-    public float getCritMultiplier()
-    {
-        return critMultiplier;
-    }
-
-    public void MultiplyDamage(float multiplier)
-    {
-        damageMultiplier *= multiplier;
-    }
-
-    public void MultiplyAttackSpeed(float multiplier)
-    {
-        attackSpeedMultiplier *= multiplier;
-    }
-
-    public void addCritChance(float chance)
-    {
-        critChance += chance;
-    }
-
-    public void addCritMultiplier(float multiplier)
-    {
-        critMultiplier += multiplier;
+        moveSpeedBonus += amount;
+        if (playerMovement != null)
+        {
+            playerMovement.moveSpeedMultiplier(1f + amount);
+        }
     }
 }

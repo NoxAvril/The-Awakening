@@ -4,19 +4,17 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float baseMoveSpeed = 5f;
+    private float moveSpeedBonus = 0f; // Tracks additive speed upgrades (e.g., +0.05 per level)
 
     [Header("Knockback")]
-    // Increased default force so knockback dominates even during active player input
     [SerializeField] private float knockbackForce = 50f; 
     [SerializeField] private float knockbackDuration = 0.25f;
 
     private Rigidbody2D rb;
 
     public Vector2 lastMoveDirection = Vector2.left;
-
     private Vector2 movementInput;
-
     private Vector2 knockbackVelocity;
     private Coroutine knockbackCoroutine;
 
@@ -32,10 +30,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 movementVelocity = movementInput * moveSpeed;
+        // Calculate final speed using base speed and upgrade bonuses
+        float currentSpeed = baseMoveSpeed * (1f + moveSpeedBonus);
+        Vector2 movementVelocity = movementInput * currentSpeed;
 
-        // Vector addition handles tangential movement automatically 
-        // when player inputs perpendicular or angled directions
         rb.linearVelocity = movementVelocity + knockbackVelocity;
     }
 
@@ -54,6 +52,16 @@ public class PlayerMovement : MonoBehaviour
         {
             lastMoveDirection = movementInput;
         }
+    }
+
+    public void AddMoveSpeedBonus(float amount)
+    {
+        moveSpeedBonus += amount;
+    }
+
+    public float GetMoveSpeedBonus()
+    {
+        return moveSpeedBonus;
     }
 
     public void ApplyKnockBack(Vector2 direction)
@@ -75,27 +83,15 @@ public class PlayerMovement : MonoBehaviour
 
         while (elapsed < knockbackDuration)
         {
-            // 1. Calculate force BEFORE yielding so FixedUpdate applies the maximum impulse immediately
             float fade = 1f - (elapsed / knockbackDuration);
             knockbackVelocity = startingVelocity * fade;
 
             yield return new WaitForFixedUpdate();
 
-            // 2. Advance time after the physics frame runs
             elapsed += Time.fixedDeltaTime;
         }
 
         knockbackVelocity = Vector2.zero;
         knockbackCoroutine = null;
-    }
-
-    public void setMoveSpeed(float moveSpeed)
-    {
-        this.moveSpeed = moveSpeed;
-    }
-
-    public void moveSpeedMultiplier(float multiplier)
-    {
-        moveSpeed *= multiplier;
     }
 }

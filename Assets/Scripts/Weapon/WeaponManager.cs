@@ -22,9 +22,7 @@ public class WeaponManager : MonoBehaviour
             if (weaponSlots[i] == null)
             {
                 Weapon newWeapon = Instantiate(weaponPrefab, transform);
-
                 weaponSlots[i] = newWeapon;
-
                 return true;
             }
         }

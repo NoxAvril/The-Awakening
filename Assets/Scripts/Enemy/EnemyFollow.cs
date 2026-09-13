@@ -7,15 +7,15 @@ public class EnemyFollow : MonoBehaviour
 
     private float damageCooldown = 0f;
     private PlayerHealth health;
-
-    private float speed;
-    private float damage;
+    private EnemyStatus enemyStatus;
 
     private Rigidbody2D rb;
+    private Vector2 knockbackVelocity;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        enemyStatus = GetComponent<EnemyStatus>();
 
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
@@ -23,25 +23,49 @@ public class EnemyFollow : MonoBehaviour
             player = playerObject.transform;
         }
 
-        if (player == null)
-            return;
-
-        health = player.GetComponent<PlayerHealth>();
-
-        if (enemyData == null)
-            return;
-
-        speed = enemyData.moveSpeed;
-        damage = enemyData.collisionDamage;
+        if (player != null)
+        {
+            health = player.GetComponent<PlayerHealth>();
+        }
     }
 
     private void FixedUpdate()
     {
-        if (player == null) return;
+        if (player == null || enemyData == null) return;
 
-        // Move physics-based enemy toward the player using Rigidbody2D
+        // 1. Handle Knockback decay
+        if (knockbackVelocity.magnitude > 0.05f)
+        {
+            rb.MovePosition(rb.position + knockbackVelocity * Time.fixedDeltaTime);
+            knockbackVelocity = Vector2.Lerp(knockbackVelocity, Vector2.zero, 15f * Time.fixedDeltaTime);
+            return;
+        }
+
+        // 2. Dynamic speed calculation (reflects Freeze/Slow status changes live)
+        float currentSpeed = enemyData.moveSpeed;
+        if (enemyStatus != null)
+        {
+            currentSpeed *= enemyStatus.GetSpeedMultiplier();
+        }
+
+        // If frozen or completely stopped by status, freeze physics movement
+        if (currentSpeed <= 0f)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        // 3. Ranged distance check
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        if (enemyData.hasRangedAttack && distanceToPlayer <= enemyData.range)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        // 4. Standard chase movement
         Vector2 direction = (player.position - transform.position).normalized;
-        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + direction * currentSpeed * Time.fixedDeltaTime);
     }
 
     private void Update()
@@ -52,41 +76,28 @@ public class EnemyFollow : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void ApplyKnockback(Vector2 force)
     {
-        TryDamagePlayer(collision);
+        knockbackVelocity = force;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        TryDamagePlayer(collision);
-    }
+    private void OnCollisionEnter2D(Collision2D collision) => TryDamagePlayer(collision);
+    private void OnCollisionStay2D(Collision2D collision) => TryDamagePlayer(collision);
 
     private void TryDamagePlayer(Collision2D collision)
     {
         GameObject target = collision.gameObject;
 
-        if (!target.CompareTag("Player"))
-            return;
-
-        if (damageCooldown > 0f)
+        if (!target.CompareTag("Player") || damageCooldown > 0f || enemyData == null)
             return;
 
         if (health != null)
         {
-            Vector2 hitDirection;
+            Vector2 hitDirection = collision.contactCount > 0 
+                ? collision.GetContact(0).normal 
+                : (Vector2)(target.transform.position - transform.position).normalized;
 
-            // Use exact contact point normal if available; fallback to normalized position difference
-            if (collision.contactCount > 0)
-            {
-                hitDirection = collision.GetContact(0).normal;
-            }
-            else
-            {
-                hitDirection = (target.transform.position - transform.position).normalized;
-            }
-
-            health.TakeDamage(damage, hitDirection);
+            health.TakeDamage(enemyData.collisionDamage, hitDirection);
             damageCooldown = 1f;
         }
     }
