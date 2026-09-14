@@ -5,6 +5,7 @@ public class CharacterData : ScriptableObject
 {
     public string characterName;
     public Weapon startingWeapon;
+    public Sprite characterSprite;
 
     public float movespeed = 5f;
     public float critChance = 0f;

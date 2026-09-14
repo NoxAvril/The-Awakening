@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Journalist
   startingWeapon: {fileID: 6841326242922978563, guid: 5a3d0c22ee6d9a04296420855a1ce952, type: 3}
+  characterSprite: {fileID: 21300000, guid: a51549512cff1442fadc166eba83e002, type: 3}
   movespeed: 7
   critChance: 0
   critMultiplier: 2

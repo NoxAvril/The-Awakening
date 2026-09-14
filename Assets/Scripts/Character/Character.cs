@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
     private WeaponManager weaponManager;
     private PlayerHealth playerHealth;
     private PlayerMovement playerMovement;
+    private SpriteRenderer spriteRenderer;
 
     // Active Combat Stats
     private float damageMultiplier = 1f;
@@ -20,6 +21,7 @@ public class Character : MonoBehaviour
         weaponManager = GetComponent<WeaponManager>();
         playerHealth = GetComponent<PlayerHealth>();
         playerMovement = GetComponent<PlayerMovement>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         string selectedCharacterName = PlayerPrefs.GetString("SelectedCharacter", "");
         bool characterFound = false;
@@ -50,6 +52,11 @@ public class Character : MonoBehaviour
         
         if (playerHealth != null) playerHealth.setMaxHealth(selectedCharacter.maxHealth);
         if (playerMovement != null) playerMovement.setMoveSpeed(selectedCharacter.movespeed);
+
+        if (selectedCharacter.characterSprite != null)
+        {
+            spriteRenderer.sprite = selectedCharacter.characterSprite;
+        }
 
         damageMultiplier = selectedCharacter.damageMultiplier;
         attackSpeedMultiplier = selectedCharacter.attackSpeedMultiplier;
@@ -86,4 +93,42 @@ public class Character : MonoBehaviour
             playerMovement.moveSpeedMultiplier(1f + amount);
         }
     }
+<<<<<<< Updated upstream
+=======
+
+    public float getAttackSpeedMultiplier()
+    {
+        return attackSpeedMultiplier;
+    }
+
+    public float getCritChance()
+    {
+        return critChance;
+    }
+
+    public float getCritMultiplier()
+    {
+        return critMultiplier;
+    }
+
+    public void MultiplyDamage(float multiplier)
+    {
+        damageMultiplier *= multiplier;
+    }
+
+    public void MultiplyAttackSpeed(float multiplier)
+    {
+        attackSpeedMultiplier *= multiplier;
+    }
+
+    public void addCritChance(float chance)
+    {
+        critChance += chance;
+    }
+
+    public void addCritMultiplier(float multiplier)
+    {
+        critMultiplier += multiplier;
+    }
+>>>>>>> Stashed changes
 }
