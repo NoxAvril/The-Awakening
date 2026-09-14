@@ -86,4 +86,5 @@ public class Character : MonoBehaviour
             playerMovement.moveSpeedMultiplier(1f + amount);
         }
     }
+    public void AddCritDamageMultiplier(float amount) => critMultiplier += amount;
 }

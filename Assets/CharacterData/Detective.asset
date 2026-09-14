@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Detective
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Detective
-  startingWeapon: {fileID: 2585581075610502027, guid: f22ff776a086dd64785b55a5679fb897, type: 3}
+  startingWeapon: {fileID: -8751479438112089160, guid: a4d9560e9e62db14da4c56376a41f3fc, type: 3}
   movespeed: 5
   critChance: 5
   critMultiplier: 2.5

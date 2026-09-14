@@ -100,4 +100,16 @@ public class PlayerHealth : MonoBehaviour
             healthBar.value = currentHealth;
         }
     }
+
+    public void IncreaseMaxHealth(float amount)
+    {
+        maxHealth += amount;
+        currentHealth = maxHealth;
+
+        if (healthBar != null)
+        {
+            healthBar.maxValue = maxHealth;
+            healthBar.value = currentHealth;
+        }
+    }
 }

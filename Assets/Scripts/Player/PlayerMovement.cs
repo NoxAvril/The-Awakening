@@ -94,4 +94,14 @@ public class PlayerMovement : MonoBehaviour
         knockbackVelocity = Vector2.zero;
         knockbackCoroutine = null;
     }
+
+    public void setMoveSpeed(float speed)
+    {
+        baseMoveSpeed = speed;
+    }
+
+    public void moveSpeedMultiplier(float multiplier)
+    {
+        moveSpeedBonus += (multiplier - 1f);
+    }
 }

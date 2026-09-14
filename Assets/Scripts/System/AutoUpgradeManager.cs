@@ -13,6 +13,17 @@ public class AutoUpgradeManager : MonoBehaviour
     private PlayerHealth playerHealth;
     private PlayerMovement playerMovement;
 
+    private void Start()
+    {
+        foreach (var upgrade in masterUpgradePool)
+        {
+            if (upgrade != null)
+            {
+                upgrade.currentLevel = 0;
+            }
+        }
+    }
+
     private void Awake()
     {
         if (playerObject != null)
