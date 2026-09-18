@@ -51,7 +51,7 @@ public class BloodCurse : Weapon
         sr.sortingLayerName = "Default";
         sr.sortingOrder = 5;
 
-        // 2. Fly Projectile to Target Position
+        // 2. Fly Projectile to Target Position (Dynamically track moving targets)
         while (target != null && Vector3.Distance(projObj.transform.position, target.transform.position) > 0.1f)
         {
             projObj.transform.position = Vector3.MoveTowards(
@@ -64,7 +64,12 @@ public class BloodCurse : Weapon
 
         Destroy(projObj);
 
-        if (target == null) yield break;
+        if (target == null)
+        {
+            // If target died in transit, bounce immediately from the last projectile position
+            TryBounceToNext(projObj.transform.position, remainingBounces, affectedEnemies);
+            yield break;
+        }
 
         // 3. Apply DoT Coroutine with Floating Skull
         yield return StartCoroutine(ApplyCurseRoutine(target, remainingBounces, affectedEnemies));
@@ -72,7 +77,11 @@ public class BloodCurse : Weapon
 
     private IEnumerator ApplyCurseRoutine(GameObject target, int remainingBounces, HashSet<GameObject> affectedEnemies)
     {
-        if (target == null || affectedEnemies.Contains(target)) yield break;
+        if (target == null || affectedEnemies.Contains(target))
+        {
+            TryBounceToNext(target != null ? target.transform.position : transform.position, remainingBounces, affectedEnemies);
+            yield break;
+        }
 
         affectedEnemies.Add(target);
 
@@ -98,6 +107,7 @@ public class BloodCurse : Weapon
 
         for (int i = 0; i < tickCount; i++)
         {
+            // If target is destroyed/dead mid-curse, break out early to trigger bounce from dead position
             if (target == null) break;
 
             // Pulsating visual effect for the skull on every tick
@@ -117,16 +127,24 @@ public class BloodCurse : Weapon
             yield return new WaitForSeconds(interval - 0.1f);
         }
 
+        // Save position for bouncing before destroying/cleaning up the target reference
+        Vector3 lastKnownPosition = target != null ? target.transform.position : transform.position;
+
         // Clean up overhead icon
         if (curseIcon != null) Destroy(curseIcon);
 
-        // 4. Bounce to Next Target
-        if (remainingBounces > 0 && target != null)
+        // 4. Bounce to Next Target from the enemy's last known position
+        TryBounceToNext(lastKnownPosition, remainingBounces, affectedEnemies);
+    }
+
+    private void TryBounceToNext(Vector3 originPos, int remainingBounces, HashSet<GameObject> affectedEnemies)
+    {
+        if (remainingBounces > 0)
         {
-            Transform nextTarget = GetNearestEnemy(target.transform.position, affectedEnemies);
+            Transform nextTarget = GetNearestEnemy(originPos, affectedEnemies);
             if (nextTarget != null)
             {
-                StartCoroutine(FlyToTargetAndCurse(target.transform.position, nextTarget.gameObject, remainingBounces - 1, affectedEnemies));
+                StartCoroutine(FlyToTargetAndCurse(originPos, nextTarget.gameObject, remainingBounces - 1, affectedEnemies));
             }
         }
     }
@@ -182,11 +200,9 @@ public class BloodCurse : Weapon
         {
             for (int y = 0; y < size; y++)
             {
-                // Simple skull shape: Cranium circle top + jaw block bottom
                 bool isCranium = Vector2.Distance(new Vector2(x, y), new Vector2(16, 20)) <= 10;
                 bool isJaw = (x >= 10 && x <= 22) && (y >= 4 && y <= 14);
 
-                // Eye sockets cutouts
                 bool isLeftEye = Vector2.Distance(new Vector2(x, y), new Vector2(12, 18)) <= 2.5f;
                 bool isRightEye = Vector2.Distance(new Vector2(x, y), new Vector2(20, 18)) <= 2.5f;
 

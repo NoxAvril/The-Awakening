@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterSelect.unity
     guid: 91b01b5eb97e7b245a6004460c9834b4
   - enabled: 1
-    path: Assets/Scenes/Game.unity
+    path: Assets/Scenes/Scroll.unity
     guid: 32ab5c05235e5f3469b190e346e620ae
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}

@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1906515e3097c4e4c910245a3e445b48, type: 3}
-  m_Name: Crit
+  m_Name: Rifle
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
-  id: Upgrade_CritDamage
-  upgradeName: Lethal Strike
-  description: Increases critical hit damage multiplier infinitely.
+  id: weapon_rifle
+  upgradeName: Rifle
+  description: A weapon that shot high speed high damage projectile.
   icon: {fileID: 0}
-  type: 1
-  currentLevel: 0
-  isUncapped: 1
+  type: 0
+  currentLevel: 1
+  isUncapped: 0
   maxLevel: 5
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 1503332422287429111, guid: 5a3d0c22ee6d9a04296420855a1ce952, type: 3}
   modifierType: 0
-  targetStat: 2
-  statIncreaseAmount: 0.25
-  weightBiasStat: 2
+  targetStat: 1
+  statIncreaseAmount: 0.3
+  weightBiasStat: 1

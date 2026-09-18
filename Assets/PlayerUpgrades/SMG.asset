@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1906515e3097c4e4c910245a3e445b48, type: 3}
-  m_Name: Crit
+  m_Name: SMG
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
-  id: Upgrade_CritDamage
-  upgradeName: Lethal Strike
-  description: Increases critical hit damage multiplier infinitely.
+  id: weapon_smg
+  upgradeName: SMG
+  description: A weapon that shot projectiles randomly in a fan shaped area.
   icon: {fileID: 0}
-  type: 1
-  currentLevel: 0
-  isUncapped: 1
+  type: 0
+  currentLevel: 1
+  isUncapped: 0
   maxLevel: 5
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 852277182980946750, guid: a4d9560e9e62db14da4c56376a41f3fc, type: 3}
   modifierType: 0
-  targetStat: 2
-  statIncreaseAmount: 0.25
-  weightBiasStat: 2
+  targetStat: 1
+  statIncreaseAmount: 0.2
+  weightBiasStat: 1

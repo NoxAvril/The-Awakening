@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1906515e3097c4e4c910245a3e445b48, type: 3}
-  m_Name: Crit
+  m_Name: AbyssalEye
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
-  id: Upgrade_CritDamage
-  upgradeName: Lethal Strike
-  description: Increases critical hit damage multiplier infinitely.
+  id: weapon_abyssal
+  upgradeName: Abyssal Eye
+  description: A weapon that deal damage to the nearest enemy and those behind them.
   icon: {fileID: 0}
-  type: 1
+  type: 0
   currentLevel: 0
-  isUncapped: 1
+  isUncapped: 0
   maxLevel: 5
-  weaponPrefab: {fileID: 0}
-  modifierType: 0
-  targetStat: 2
-  statIncreaseAmount: 0.25
-  weightBiasStat: 2
+  weaponPrefab: {fileID: 8588704742341349596, guid: e343937cc75e5ab4c831aa80ac67d7ad, type: 3}
+  modifierType: 3
+  targetStat: 1
+  statIncreaseAmount: 0.2
+  weightBiasStat: 1

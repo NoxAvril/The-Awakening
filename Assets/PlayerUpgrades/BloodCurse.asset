@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1906515e3097c4e4c910245a3e445b48, type: 3}
-  m_Name: Crit
+  m_Name: BloodCurse
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
-  id: Upgrade_CritDamage
-  upgradeName: Lethal Strike
-  description: Increases critical hit damage multiplier infinitely.
+  id: weapon_curse
+  upgradeName: Blood Curse
+  description: A tracking weapon that deal DOT damage to the enemy and target other
+    after finishing one.(depending on the bounce number)
   icon: {fileID: 0}
-  type: 1
+  type: 0
   currentLevel: 0
-  isUncapped: 1
+  isUncapped: 0
   maxLevel: 5
-  weaponPrefab: {fileID: 0}
-  modifierType: 0
-  targetStat: 2
-  statIncreaseAmount: 0.25
-  weightBiasStat: 2
+  weaponPrefab: {fileID: 5572508385424691026, guid: def0b6ceb1e0ab1428dc61565befee61, type: 3}
+  modifierType: 2
+  targetStat: 1
+  statIncreaseAmount: 0.2
+  weightBiasStat: 1

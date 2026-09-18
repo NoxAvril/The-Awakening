@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1906515e3097c4e4c910245a3e445b48, type: 3}
-  m_Name: Crit
+  m_Name: Grenade
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
-  id: Upgrade_CritDamage
-  upgradeName: Lethal Strike
-  description: Increases critical hit damage multiplier infinitely.
+  id: weapon_grenade
+  upgradeName: Grenade
+  description: A throwable weapon that deal AOE damage.
   icon: {fileID: 0}
-  type: 1
+  type: 0
   currentLevel: 0
-  isUncapped: 1
+  isUncapped: 0
   maxLevel: 5
-  weaponPrefab: {fileID: 0}
-  modifierType: 0
-  targetStat: 2
-  statIncreaseAmount: 0.25
-  weightBiasStat: 2
+  weaponPrefab: {fileID: 61866482330690849, guid: 352e3d2aa89fd5b4ba6c007bd12b5cd8, type: 3}
+  modifierType: 1
+  targetStat: 1
+  statIncreaseAmount: 0.2
+  weightBiasStat: 1

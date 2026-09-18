@@ -1,39 +1,71 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class LevelUpDisplayUI : MonoBehaviour
+public class LevelUpDisplayUI : MonoBehaviour, IPointerClickHandler
 {
     public static LevelUpDisplayUI Instance;
 
-    [Header("UI References")]
+    [Header("Player Level Up UI")]
     [SerializeField] private GameObject notificationPanel;
     [SerializeField] private Image upgradeIcon;
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI descriptionText;
-    [SerializeField] private Button continueButton;
+
+    [Header("Enemy Upgrade UI")]
+    [SerializeField] private GameObject enemyUpgradePanel;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         if (notificationPanel != null)
             notificationPanel.SetActive(false);
 
-        if (continueButton != null)
-            continueButton.onClick.AddListener(OnContinueClicked);
+        if (enemyUpgradePanel != null)
+            enemyUpgradePanel.SetActive(false);
     }
+
+    // ============================================================
+    // PLAYER LEVEL-UP NOTIFICATION
+    // ============================================================
 
     public void ShowUpgradeNotification(UpgradeData upgrade)
     {
-        // 1. Pause the game
+        if (upgrade == null)
+        {
+            Debug.LogWarning(
+                "[LevelUpDisplayUI] UpgradeData is null."
+            );
+
+            return;
+        }
+
+        // Pause the game.
         Time.timeScale = 0f;
 
-        // 2. Populate UI with the upgrade chosen automatically
-        if (titleText != null) titleText.text = $"Auto-Upgraded: {upgrade.upgradeName}";
-        if (descriptionText != null) descriptionText.text = upgrade.description;
-        
+        // Set upgrade name.
+        if (titleText != null)
+        {
+            titleText.text = upgrade.upgradeName;
+        }
+
+        // Set description.
+        if (descriptionText != null)
+        {
+            descriptionText.text = upgrade.description;
+        }
+
+        // Set icon.
         if (upgradeIcon != null)
         {
             if (upgrade.icon != null)
@@ -47,19 +79,111 @@ public class LevelUpDisplayUI : MonoBehaviour
             }
         }
 
-        // 3. Show notification panel
+        // Show player upgrade notification.
         if (notificationPanel != null)
+        {
             notificationPanel.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError(
+                "[LevelUpDisplayUI] Notification Panel is not assigned!"
+            );
+        }
+
+        // Keep enemy panel hidden.
+        if (enemyUpgradePanel != null)
+        {
+            enemyUpgradePanel.SetActive(false);
+        }
     }
 
-    private void OnContinueClicked()
+    // ============================================================
+    // CLICK NOTIFICATION PANEL
+    // ============================================================
+
+    public void OnPointerClick(PointerEventData eventData)
     {
-        // Hide panel and resume game
+        // Only react while the player upgrade notification
+        // is currently visible.
+        if (notificationPanel == null)
+            return;
+
+        if (!notificationPanel.activeSelf)
+            return;
+
+        HandleNotificationClick();
+    }
+
+    private void HandleNotificationClick()
+    {
+        // --------------------------------------------------------
+        // ENEMY UPGRADE PANEL EXISTS
+        // --------------------------------------------------------
+
+        if (enemyUpgradePanel != null)
+        {
+            ShowEnemyUpgradePanel();
+            return;
+        }
+
+        // --------------------------------------------------------
+        // ENEMY UPGRADE PANEL DOES NOT EXIST YET
+        // --------------------------------------------------------
+
+        Debug.Log(
+            "[LevelUpDisplayUI] Enemy Upgrade Panel is not assigned. " +
+            "Resuming game."
+        );
+
+        notificationPanel.SetActive(false);
+
+        Time.timeScale = 1f;
+    }
+
+    // ============================================================
+    // SHOW ENEMY UPGRADE PANEL
+    // ============================================================
+
+    public void ShowEnemyUpgradePanel()
+    {
         if (notificationPanel != null)
+        {
             notificationPanel.SetActive(false);
+        }
 
-        Time.timeScale = 1f; 
+        if (enemyUpgradePanel != null)
+        {
+            enemyUpgradePanel.SetActive(true);
 
-        // TODO: Next, we will chain the Enemy Upgrade selection panel here!
+            // Keep game paused while choosing
+            // the enemy upgrade.
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            // Safety fallback if the panel hasn't been assigned.
+            Time.timeScale = 1f;
+
+            Debug.LogWarning(
+                "[LevelUpDisplayUI] Enemy Upgrade Panel is not assigned. " +
+                "Game resumed."
+            );
+        }
+    }
+
+    // ============================================================
+    // FINISH ENEMY UPGRADE SELECTION
+    // ============================================================
+
+    public void FinishEnemyUpgradeSelection()
+    {
+        if (enemyUpgradePanel != null)
+        {
+            enemyUpgradePanel.SetActive(false);
+        }
+
+        // Resume gameplay.
+        Time.timeScale = 1f;
     }
 }
