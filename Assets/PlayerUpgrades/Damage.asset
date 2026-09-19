@@ -23,5 +23,5 @@ MonoBehaviour:
   weaponPrefab: {fileID: 0}
   modifierType: 0
   targetStat: 1
-  statIncreaseAmount: 0.15
+  statIncreaseAmount: 0.2
   weightBiasStat: 1

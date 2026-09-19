@@ -72,7 +72,7 @@ public class Character : MonoBehaviour
     public float getMoveSpeedBonus() => moveSpeedBonus;
 
     // --- Stat Modifiers (Used by Upgrades) ---
-    public void AddDamageMultiplier(float amount) => damageMultiplier += amount;
+    public void AddDamageMultiplier(float   amount) => damageMultiplier += amount;
     public void AddAttackSpeedMultiplier(float amount) => attackSpeedMultiplier += amount;
     public void addCritChance(float chance) => critChance += chance;
     public void addCritMultiplier(float multiplier) => critMultiplier += multiplier;

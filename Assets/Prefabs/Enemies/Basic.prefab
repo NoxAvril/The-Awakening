@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3024992339290168830}
   - component: {fileID: 1053681112495602504}
   - component: {fileID: 1367351578225194604}
+  - component: {fileID: -1321816756629025229}
   m_Layer: 0
   m_Name: Basic
   m_TagString: Enemy
@@ -200,3 +201,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4875cf2493225a49aeda83f3c548be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
+--- !u!114 &-1321816756629025229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765678486695119926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8adcea8cee6ebb4aa0d09cf20525c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  enemyData: {fileID: 11400000, guid: 71058500e9de7bc45b6719a38f315545, type: 2}
+  enemyName: 
+  maxHealth: 0
+  currentHealth: 0
+  moveSpeed: 0
+  collisionDamage: 0
+  hasRangedAttack: 0
+  rangeDamage: 0
+  attackInterval: 0
+  range: 0
+  baseExpReward: 0
+  currentExpReward: 0

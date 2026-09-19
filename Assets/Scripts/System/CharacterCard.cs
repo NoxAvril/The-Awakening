@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CharacterCard : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class CharacterCard : MonoBehaviour
         PlayerPrefs.SetString("SelectedCharacter", characterData.characterName);
         PlayerPrefs.Save();
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+        string selectedLevel = MainMenu.GetSelectedLevel();
+
+        Debug.Log("Loading level: " + selectedLevel);
+
+        SceneManager.LoadScene(selectedLevel);
     }
 }

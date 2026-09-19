@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caddbefbb42cf1840aad5e1262741621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbyssalEye
-  damage: 10
+  damage: 20
   attackRate: 0.5
   range: 8
   knockback: 0

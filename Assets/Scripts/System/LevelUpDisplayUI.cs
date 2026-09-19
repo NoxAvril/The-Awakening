@@ -148,7 +148,7 @@ public class LevelUpDisplayUI : MonoBehaviour, IPointerClickHandler
     public void ShowEnemyUpgradePanel()
     {
         if (notificationPanel != null)
-        {
+        {  
             notificationPanel.SetActive(false);
         }
 
@@ -156,19 +156,30 @@ public class LevelUpDisplayUI : MonoBehaviour, IPointerClickHandler
         {
             enemyUpgradePanel.SetActive(true);
 
-            // Keep game paused while choosing
-            // the enemy upgrade.
+            EnemyUpgradeSelectionUI selectionUI =
+                enemyUpgradePanel.GetComponent<EnemyUpgradeSelectionUI>();
+
+            if (selectionUI != null)
+            {
+                selectionUI.ShowEnemyUpgrades();
+            }
+            else
+            {
+                Debug.LogError(
+                    "[LevelUpDisplayUI] EnemyUpgradeSelectionUI " +
+                    "is missing from EnemyUpgradePanel!"
+                );
+            }
+
             Time.timeScale = 0f;
         }
         else
         {
-            // Safety fallback if the panel hasn't been assigned.
-            Time.timeScale = 1f;
-
             Debug.LogWarning(
-                "[LevelUpDisplayUI] Enemy Upgrade Panel is not assigned. " +
-                "Game resumed."
+                "[LevelUpDisplayUI] Enemy Upgrade Panel is not assigned."
             );
+
+            Time.timeScale = 1f;
         }
     }
 

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -1011480153011811048}
   - component: {fileID: 1939989972891171916}
   - component: {fileID: 4544480735551811669}
+  - component: {fileID: 6380822710418421316}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Enemy
@@ -231,3 +232,27 @@ MonoBehaviour:
   projectileSpeed: 6
   isAoEAttack: 0
   aoeRadius: 0
+--- !u!114 &6380822710418421316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100299601003317396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8adcea8cee6ebb4aa0d09cf20525c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  enemyData: {fileID: 11400000, guid: 94627793bc5e09f42b1d29998815a14a, type: 2}
+  enemyName: 
+  maxHealth: 0
+  currentHealth: 0
+  moveSpeed: 0
+  collisionDamage: 0
+  hasRangedAttack: 0
+  rangeDamage: 0
+  attackInterval: 0
+  range: 0
+  baseExpReward: 0
+  currentExpReward: 0

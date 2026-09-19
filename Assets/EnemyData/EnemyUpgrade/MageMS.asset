@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37dff83e0d87914da0a8fec6709fffd, type: 3}
+  m_Name: MageMS
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
+  id: mage_ms
+  upgradeName: Mage Speed
+  description: Increase Mage enemy movement speed by 0.2.
+  icon: {fileID: 0}
+  type: 1
+  enemyPrefab: {fileID: 0}
+  targetEnemyPrefab: {fileID: 3100299601003317396, guid: 353ed9bc39b1d434ab2dc7f34d65ff80, type: 3}
+  targetStat: 3
+  statIncreaseAmount: 0.2
+  isRepeatable: 1
+  eliteCountIncrement: 1
+  baseStatMultiplier: 2
+  excludedStatMultiplier: 1.5
+  expRewardModifier: 1.5

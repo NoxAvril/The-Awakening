@@ -18,10 +18,10 @@ MonoBehaviour:
   icon: {fileID: 0}
   type: 1
   currentLevel: 0
-  isUncapped: 0
+  isUncapped: 1
   maxLevel: 10
   weaponPrefab: {fileID: 0}
   modifierType: 0
   targetStat: 4
-  statIncreaseAmount: 0.05
+  statIncreaseAmount: 0.1
   weightBiasStat: 4

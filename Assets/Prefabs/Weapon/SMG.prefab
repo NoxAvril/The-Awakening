@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 583c6e5132bf64445a48a74a8fbe0b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SMG
-  damage: 1.5
+  damage: 3
   attackRate: 2
   range: 7
   knockback: 0
@@ -59,7 +59,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5120545397063824122, guid: 6c7b660eb54319448be47fcfe4438020, type: 3}
   bulletSpawnDistance: 0.5
   aimMode: 0
-  attackTimer: 0
   bulletCount: 10
   bulletInterval: 0.02
   spread: 20

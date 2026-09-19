@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -1011480153011811048}
   - component: {fileID: 8205513236615531158}
   - component: {fileID: 2195658008059685169}
+  - component: {fileID: -8069111870374973145}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Enemy
@@ -231,3 +232,27 @@ MonoBehaviour:
   projectileSpeed: 5
   isAoEAttack: 1
   aoeRadius: 2
+--- !u!114 &-8069111870374973145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100299601003317396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8adcea8cee6ebb4aa0d09cf20525c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  enemyData: {fileID: 11400000, guid: f2c7a1d62da35ef4fa98510f604ce6b2, type: 2}
+  enemyName: 
+  maxHealth: 0
+  currentHealth: 0
+  moveSpeed: 0
+  collisionDamage: 0
+  hasRangedAttack: 0
+  rangeDamage: 0
+  attackInterval: 0
+  range: 0
+  baseExpReward: 0
+  currentExpReward: 0

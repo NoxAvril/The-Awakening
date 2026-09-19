@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae315c22c9245a45bef973628f1c8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mine
-  damage: 5
+  damage: 30
   attackRate: 0.05
   range: 0
   knockback: 5

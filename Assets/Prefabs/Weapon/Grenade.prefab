@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d30872da844db4186b7036180c8fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grenade
-  damage: 2
+  damage: 10
   attackRate: 0.2
   range: 6
   knockback: 2

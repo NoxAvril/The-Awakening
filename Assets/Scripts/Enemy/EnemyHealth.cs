@@ -2,21 +2,42 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [Header("References")]
     public EnemyData enemyData;
-    [SerializeField] private GameObject expGemPrefab;
 
-    private float currentHealth;
+    [SerializeField]
+    private GameObject expGemPrefab;
+
+    private EnemyController enemyController;
     private EnemyFollow enemyFollow;
 
-    public static float GlobalExpBonusPercentage = 0f;
+    private float currentHealth;
 
-    void Start()
+
+    // ============================================================
+    // START
+    // ============================================================
+
+    private void Start()
     {
-        enemyFollow = GetComponent<EnemyFollow>();
+        enemyFollow =
+            GetComponent<EnemyFollow>();
 
-        if (enemyData != null)
+        enemyController =
+            GetComponent<EnemyController>();
+
+
+        // Use EnemyController's final runtime HP.
+        // This includes Elite scaling if the enemy is Elite.
+        if (enemyController != null)
         {
-            currentHealth = enemyData.maxHealth;
+            currentHealth =
+                enemyController.currentHealth;
+        }
+        else if (enemyData != null)
+        {
+            currentHealth =
+                enemyData.maxHealth;
         }
         else
         {
@@ -24,37 +45,137 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage, Vector2 knockback = default)
+
+    // ============================================================
+    // TAKE DAMAGE
+    // ============================================================
+
+    public void TakeDamage(
+        float damage,
+        Vector2 knockback = default)
     {
         currentHealth -= damage;
 
-        if (knockback != Vector2.zero && enemyFollow != null)
+
+        // Keep EnemyController synchronized.
+        if (enemyController != null)
         {
-            enemyFollow.ApplyKnockback(knockback);
+            enemyController.currentHealth =
+                currentHealth;
         }
 
-        if (currentHealth <= 0)
+
+        // Apply knockback.
+        if (
+            knockback != Vector2.zero &&
+            enemyFollow != null
+        )
+        {
+            enemyFollow.ApplyKnockback(
+                knockback
+            );
+        }
+
+
+        // Check for death.
+        if (currentHealth <= 0f)
         {
             Die();
         }
     }
 
-    void Die()
+
+    // ============================================================
+    // ADD HEALTH FROM NORMAL STAT UPGRADE
+    // ============================================================
+
+    public void AddHealth(float amount)
+    {
+        if (amount <= 0f)
+            return;
+
+
+        currentHealth += amount;
+
+
+        // Keep EnemyController synchronized.
+        if (enemyController != null)
+        {
+            enemyController.currentHealth =
+                currentHealth;
+        }
+    }
+
+
+    // ============================================================
+    // DIE
+    // ============================================================
+
+    private void Die()
     {
         SpawnExpGems();
+
         Destroy(gameObject);
     }
 
+
+    // ============================================================
+    // SPAWN EXP GEMS
+    // ============================================================
+
     private void SpawnExpGems()
     {
-        if (expGemPrefab == null) return;
+        if (expGemPrefab == null)
+            return;
 
-        int baseReward = enemyData != null ? enemyData.baseExpReward : 1;
-        float individualMultiplier = enemyData != null ? enemyData.expMultiplier : 1f;
 
-        float finalExpFloat = baseReward * individualMultiplier * (1f + GlobalExpBonusPercentage);
-        int totalExp = Mathf.Max(1, Mathf.RoundToInt(finalExpFloat));
+        // Original/base EXP from EnemyData.
+        int baseReward =
+            enemyData != null
+                ? enemyData.baseExpReward
+                : 1;
 
-        ExpGem.DropExp(transform.position, totalExp, expGemPrefab);
+
+        // Individual EXP multiplier from EnemyData.
+        float individualMultiplier =
+            enemyData != null
+                ? enemyData.expMultiplier
+                : 1f;
+
+
+        // Global multiplier from enemy upgrades.
+        float globalMultiplier =
+            EnemyUpgradeManager
+                .GetGlobalExpMultiplier();
+
+
+        // Final EXP:
+        //
+        // Base EXP
+        // × Individual EXP Multiplier
+        // × Global Upgrade Multiplier
+        //
+        float finalExpFloat =
+            baseReward *
+            individualMultiplier *
+            globalMultiplier;
+
+
+        // Round to nearest whole number.
+        int totalExp =
+            Mathf.Max(
+                1,
+                Mathf.RoundToInt(
+                    finalExpFloat
+                )
+            );
+
+
+        // Drop EXP gems.
+        ExpGem.DropExp(
+            transform.position,
+            totalExp,
+            expGemPrefab
+        );
     }
 }

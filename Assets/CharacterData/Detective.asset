@@ -17,6 +17,6 @@ MonoBehaviour:
   movespeed: 5
   critChance: 5
   critMultiplier: 2.5
-  maxHealth: 10
+  maxHealth: 30
   attackSpeedMultiplier: 1
   damageMultiplier: 1

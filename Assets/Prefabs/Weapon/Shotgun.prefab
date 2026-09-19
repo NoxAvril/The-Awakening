@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431059aa3a13b2148b01d33e6bded298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shotgun
-  damage: 2
+  damage: 5
   attackRate: 0.5
   range: 5
   knockback: 0
@@ -59,6 +59,5 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5120545397063824122, guid: 6c7b660eb54319448be47fcfe4438020, type: 3}
   bulletSpawnDistance: 0.5
   aimMode: 0
-  attackTimer: 0
   bulletCount: 5
   spread: 40

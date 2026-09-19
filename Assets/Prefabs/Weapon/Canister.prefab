@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d0b506a1557c34694332dca4f823ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Canister
-  damage: 1
+  damage: 3
   attackRate: 0.2
   range: 5
   knockback: 0

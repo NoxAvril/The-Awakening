@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725a04d38468db647ab0077ca41a7624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloodCurse
-  damage: 5
+  damage: 7
   attackRate: 0.4
   range: 6
   knockback: 0

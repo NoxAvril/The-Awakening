@@ -3,6 +3,8 @@ using UnityEngine;
 public class RangedEnemyAttack : MonoBehaviour
 {
     private EnemyFollow enemyFollow;
+    private EnemyController enemyController;
+
     private float attackTimer;
 
     [Header("Projectile Settings")]
@@ -13,46 +15,115 @@ public class RangedEnemyAttack : MonoBehaviour
     [SerializeField] private bool isAoEAttack = false;
     [SerializeField] private float aoeRadius = 2f;
 
+
     private void Start()
     {
-        enemyFollow = GetComponent<EnemyFollow>();
-        
-        if (enemyFollow != null && enemyFollow.enemyData != null)
+        enemyFollow =
+            GetComponent<EnemyFollow>();
+
+        enemyController =
+            GetComponent<EnemyController>();
+
+        if (enemyController != null)
         {
-            attackTimer = enemyFollow.enemyData.attackInterval;
+            attackTimer =
+                enemyController.attackInterval;
+        }
+        else
+        {
+            attackTimer = 1f;
         }
     }
 
+
     private void Update()
     {
-        if (enemyFollow == null || enemyFollow.player == null || enemyFollow.enemyData == null) return;
-        if (!enemyFollow.enemyData.hasRangedAttack) return;
-
-        float distanceToPlayer = Vector2.Distance(transform.position, enemyFollow.player.position);
-
-        if (distanceToPlayer <= enemyFollow.enemyData.range)
+        if (
+            enemyFollow == null ||
+            enemyController == null ||
+            enemyFollow.player == null
+        )
         {
-            attackTimer -= Time.deltaTime;
+            return;
+        }
+
+        if (!enemyController.hasRangedAttack)
+        {
+            return;
+        }
+
+        float distanceToPlayer =
+            Vector2.Distance(
+                transform.position,
+                enemyFollow.player.position
+            );
+
+        if (
+            distanceToPlayer <=
+            enemyController.range
+        )
+        {
+            attackTimer -=
+                Time.deltaTime;
+
             if (attackTimer <= 0f)
             {
                 ShootAtPlayer();
-                attackTimer = enemyFollow.enemyData.attackInterval;
+
+                attackTimer =
+                    Mathf.Max(
+                        0.01f,
+                        enemyController.attackInterval
+                    );
             }
         }
     }
 
+
     private void ShootAtPlayer()
     {
-        if (projectilePrefab == null) return;
-
-        Vector2 direction = (enemyFollow.player.position - transform.position).normalized;
-        if (direction == Vector2.zero) direction = Vector2.right;
-
-        GameObject proj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-
-        if (proj.TryGetComponent<EnemyProjectile>(out var enemyProj))
+        if (projectilePrefab == null)
         {
-            enemyProj.Setup(direction, projectileSpeed, enemyFollow.enemyData.rangeDamage, isAoEAttack, aoeRadius);
+            return;
+        }
+
+        if (enemyFollow.player == null)
+        {
+            return;
+        }
+
+        Vector2 direction =
+            (
+                enemyFollow.player.position -
+                transform.position
+            ).normalized;
+
+        if (direction == Vector2.zero)
+        {
+            direction =
+                Vector2.right;
+        }
+
+        GameObject projectile =
+            Instantiate(
+                projectilePrefab,
+                transform.position,
+                Quaternion.identity
+            );
+
+        if (
+            projectile.TryGetComponent<EnemyProjectile>(
+                out var enemyProjectile
+            )
+        )
+        {
+            enemyProjectile.Setup(
+                direction,
+                projectileSpeed,
+                enemyController.rangeDamage,
+                isAoEAttack,
+                aoeRadius
+            );
         }
     }
 }
