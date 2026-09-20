@@ -21,6 +21,22 @@ public class BloodCurse : Weapon
     private Sprite generatedCircleSprite;
     private Sprite generatedSkullPlaceholder;
 
+    // ============================================================
+    // CURRENTLY CURSED ENEMIES
+    // ============================================================
+
+    /*
+     * This list persists between attacks.
+     *
+     * An enemy stays inside this HashSet for the entire
+     * duration of its Blood Curse.
+     *
+     * This prevents a new Blood Curse attack from targeting
+     * an enemy that is already afflicted.
+     */
+    private HashSet<GameObject> currentlyCursedEnemies =
+        new HashSet<GameObject>();
+
 
     // ============================================================
     // AWAKE
@@ -43,6 +59,12 @@ public class BloodCurse : Weapon
 
     public override void Attack()
     {
+        /*
+         * This HashSet is only for THIS chain.
+         *
+         * currentlyCursedEnemies handles enemies that are
+         * already afflicted by previous attacks.
+         */
         HashSet<GameObject> chainAffectedEnemies =
             new HashSet<GameObject>();
 
@@ -80,7 +102,8 @@ public class BloodCurse : Weapon
     {
         if (
             target == null ||
-            affectedEnemies.Contains(target)
+            affectedEnemies.Contains(target) ||
+            IsCurrentlyCursed(target)
         )
         {
             yield break;
@@ -118,7 +141,6 @@ public class BloodCurse : Weapon
             5;
 
 
-        // Keep track of the projectile's last valid position.
         Vector3 lastProjectilePosition =
             startPos;
 
@@ -135,6 +157,29 @@ public class BloodCurse : Weapon
             ) > 0.1f
         )
         {
+            /*
+             * The target could become cursed by another
+             * Blood Curse while this projectile is traveling.
+             *
+             * Stop if that happens.
+             */
+            if (IsCurrentlyCursed(target))
+            {
+                lastProjectilePosition =
+                    projObj.transform.position;
+
+                Destroy(projObj);
+
+                TryBounceToNext(
+                    lastProjectilePosition,
+                    remainingBounces,
+                    affectedEnemies
+                );
+
+                yield break;
+            }
+
+
             projObj.transform.position =
                 Vector3.MoveTowards(
                     projObj.transform.position,
@@ -152,8 +197,10 @@ public class BloodCurse : Weapon
         }
 
 
-        // Save the final projectile position BEFORE
-        // destroying the projectile object.
+        // ========================================================
+        // SAVE FINAL PROJECTILE POSITION
+        // ========================================================
+
         if (projObj != null)
         {
             lastProjectilePosition =
@@ -164,10 +211,26 @@ public class BloodCurse : Weapon
 
 
         // ========================================================
-        // TARGET DIED WHILE PROJECTILE WAS TRAVELING
+        // TARGET DIED
         // ========================================================
 
         if (target == null)
+        {
+            TryBounceToNext(
+                lastProjectilePosition,
+                remainingBounces,
+                affectedEnemies
+            );
+
+            yield break;
+        }
+
+
+        // ========================================================
+        // TARGET BECAME CURSED
+        // ========================================================
+
+        if (IsCurrentlyCursed(target))
         {
             TryBounceToNext(
                 lastProjectilePosition,
@@ -204,14 +267,23 @@ public class BloodCurse : Weapon
     {
         if (
             target == null ||
-            affectedEnemies.Contains(target)
+            affectedEnemies.Contains(target) ||
+            IsCurrentlyCursed(target)
         )
         {
             yield break;
         }
 
 
+        // ========================================================
+        // MARK AS AFFECTED
+        // ========================================================
+
         affectedEnemies.Add(
+            target
+        );
+
+        currentlyCursedEnemies.Add(
             target
         );
 
@@ -281,8 +353,6 @@ public class BloodCurse : Weapon
             Mathf.Max(1, tickCount);
 
 
-        // This stores the enemy's LAST VALID position.
-        // Even if the enemy dies, we still know where it was.
         Vector3 lastKnownEnemyPosition =
             target.transform.position;
 
@@ -308,9 +378,6 @@ public class BloodCurse : Weapon
             }
             else
             {
-                // Enemy died.
-                // Stop the curse and bounce from its
-                // last known position.
                 break;
             }
 
@@ -343,9 +410,6 @@ public class BloodCurse : Weapon
                 );
 
 
-                // Save position immediately after damage.
-                // This is important because the damage may
-                // have killed the enemy.
                 if (target != null)
                 {
                     lastKnownEnemyPosition =
@@ -403,15 +467,55 @@ public class BloodCurse : Weapon
 
 
         // ========================================================
+        // REMOVE FROM CURRENTLY CURSED
+        // ========================================================
+
+        /*
+         * The curse has finished.
+         *
+         * The enemy can now be targeted by a future
+         * Blood Curse attack.
+         */
+        currentlyCursedEnemies.Remove(
+            target
+        );
+
+
+        // ========================================================
         // BOUNCE
         // ========================================================
 
-        // ALWAYS use the last position of the enemy,
-        // NOT the player's position.
         TryBounceToNext(
             lastKnownEnemyPosition,
             remainingBounces,
             affectedEnemies
+        );
+    }
+
+
+    // ============================================================
+    // CHECK IF CURRENTLY CURSED
+    // ============================================================
+
+    private bool IsCurrentlyCursed(
+        GameObject enemy)
+    {
+        if (enemy == null)
+        {
+            return false;
+        }
+
+
+        /*
+         * Remove destroyed enemies from the HashSet.
+         */
+        currentlyCursedEnemies.RemoveWhere(
+            item => item == null
+        );
+
+
+        return currentlyCursedEnemies.Contains(
+            enemy
         );
     }
 
@@ -485,6 +589,10 @@ public class BloodCurse : Weapon
             }
 
 
+            // ====================================================
+            // SKIP CHAIN TARGETS
+            // ====================================================
+
             if (
                 ignoredEnemies != null &&
                 ignoredEnemies.Contains(
@@ -495,6 +603,24 @@ public class BloodCurse : Weapon
                 continue;
             }
 
+
+            // ====================================================
+            // SKIP ALREADY CURSED ENEMIES
+            // ====================================================
+
+            if (
+                IsCurrentlyCursed(
+                    enemyObject
+                )
+            )
+            {
+                continue;
+            }
+
+
+            // ====================================================
+            // CHECK DISTANCE
+            // ====================================================
 
             float distance =
                 Vector2.Distance(

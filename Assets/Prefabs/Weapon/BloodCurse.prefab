@@ -58,6 +58,6 @@ MonoBehaviour:
   dotDuration: 2
   tickCount: 4
   projectileSpeed: 12
-  curseSkullSprite: {fileID: -3560852360957142242, guid: eaf614b9389fa6045b7215dce881f936, type: 3}
-  orbSprite: {fileID: 7180409166435649439, guid: f5a36142262747f40add0f2dccfc1ac5, type: 3}
-  curseColor: {r: 0.8, g: 0.1, b: 0.1, a: 0.9}
+  curseSkullSprite: {fileID: 21300000, guid: beb585c351d81ba4793266fda180778b, type: 3}
+  orbSprite: {fileID: 21300000, guid: 51195e9ba1f95d64187c1446d51eab2c, type: 3}
+  curseColor: {r: 1, g: 1, b: 1, a: 1}

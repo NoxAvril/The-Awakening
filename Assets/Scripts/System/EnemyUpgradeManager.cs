@@ -48,6 +48,25 @@ public class EnemyUpgradeManager : MonoBehaviour
 
 
     // ============================================================
+    // RESET ALL RUN UPGRADES
+    // ============================================================
+
+    public static void ResetRunUpgrades()
+    {
+        // Reset all enemy stat bonuses.
+        enemyBonuses.Clear();
+
+        // Reset global EXP multiplier.
+        globalExpMultiplier = 1.0f;
+
+        Debug.Log(
+            "[EnemyUpgradeManager] " +
+            "All run enemy upgrades have been reset."
+        );
+    }
+
+
+    // ============================================================
     // GET GLOBAL EXP MULTIPLIER
     // ============================================================
 
@@ -180,7 +199,7 @@ public class EnemyUpgradeManager : MonoBehaviour
         }
 
 
-        // Save the permanent stat bonus.
+        // Add the stat bonus for this run.
         data.bonuses[
             upgrade.targetStat
         ] += upgrade.statIncreaseAmount;
@@ -219,7 +238,7 @@ public class EnemyUpgradeManager : MonoBehaviour
 
 
     // ============================================================
-    // APPLY SAVED BONUSES TO NEW ENEMIES
+    // APPLY RUN BONUSES TO NEW ENEMIES
     // ============================================================
 
     private static void ApplySavedBonuses(

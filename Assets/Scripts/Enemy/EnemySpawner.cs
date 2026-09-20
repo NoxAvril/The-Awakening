@@ -4,22 +4,44 @@ using System.Collections.Generic;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawn Pools & References")]
-    public List<GameObject> unlockedEnemies = new List<GameObject>();
+    public List<GameObject> unlockedEnemies =
+        new List<GameObject>();
+
     public GameObject startingEnemy;
+
     public Transform player;
+
     public Camera mainCamera;
+
 
     [Header("Spawn Settings")]
     public float spawnInterval = 1f;
+
     public float spawnMargin = 2f;
+
 
     private float spawnTimer;
 
-    // Track upgrade data structures for scaling and elite management
-    private Dictionary<string, int> eliteCountsPerEnemy = new Dictionary<string, int>();
-    private Dictionary<string, EnemyUpgradeData> activeEnemyUpgrades = new Dictionary<string, EnemyUpgradeData>();
 
-    void Start()
+    // ============================================================
+    // RUNTIME ENEMY DATA
+    // ============================================================
+
+    private Dictionary<string, int>
+        eliteCountsPerEnemy =
+        new Dictionary<string, int>();
+
+
+    private Dictionary<string, EnemyUpgradeData>
+        activeEnemyUpgrades =
+        new Dictionary<string, EnemyUpgradeData>();
+
+
+    // ============================================================
+    // START
+    // ============================================================
+
+    private void Start()
     {
         if (startingEnemy != null)
         {
@@ -27,147 +49,495 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void Update()
+
+    // ============================================================
+    // UPDATE
+    // ============================================================
+
+    private void Update()
     {
         spawnTimer -= Time.deltaTime;
 
-        if (spawnTimer <= 0)
+        if (spawnTimer <= 0f)
         {
             SpawnWave();
-            spawnTimer = spawnInterval;
+
+            spawnTimer =
+                spawnInterval;
         }
     }
 
-    void SpawnWave()
+
+    // ============================================================
+    // SPAWN WAVE
+    // ============================================================
+
+    private void SpawnWave()
     {
-        if (unlockedEnemies.Count == 0) return;
+        if (unlockedEnemies.Count == 0)
+            return;
 
-        // 1. Pick a random unlocked base enemy prefab
-        int randomIndex = Random.Range(0, unlockedEnemies.Count);
-        GameObject enemyPrefab = unlockedEnemies[randomIndex];
-        string enemyKey = enemyPrefab.name;
 
-        // Get the active configuration/upgrades for this specific enemy type
-        EnemyUpgradeData currentConfig = activeEnemyUpgrades.ContainsKey(enemyKey) ? activeEnemyUpgrades[enemyKey] : null;
+        // ========================================================
+        // PICK RANDOM ENEMY
+        // ========================================================
 
-        // 2. Spawn Base Enemy
-        Vector2 baseSpawnPos = GetRandomOffscreenPosition();
-        GameObject baseEnemy = Instantiate(enemyPrefab, baseSpawnPos, Quaternion.identity);
-        ConfigureEnemy(baseEnemy, currentConfig, isElite: false);
+        int randomIndex =
+            Random.Range(
+                0,
+                unlockedEnemies.Count
+            );
 
-        // 3. Spawn Tied Elites for this enemy type (if any were unlocked/stacked)
-        int elitesToSpawn = eliteCountsPerEnemy.ContainsKey(enemyKey) ? eliteCountsPerEnemy[enemyKey] : 0;
 
-        for (int i = 0; i < elitesToSpawn; i++)
+        GameObject enemyPrefab =
+            unlockedEnemies[randomIndex];
+
+
+        if (enemyPrefab == null)
+            return;
+
+
+        string enemyKey =
+            enemyPrefab.name;
+
+
+        // ========================================================
+        // GET NORMAL STAT UPGRADE
+        // ========================================================
+
+        EnemyUpgradeData currentConfig = null;
+
+
+        if (
+            activeEnemyUpgrades.ContainsKey(
+                enemyKey
+            )
+        )
         {
-            Vector2 eliteOffset = new Vector2(Random.Range(-1.5f, 1.5f), Random.Range(-1.5f, 1.5f));
-            GameObject eliteEnemy = Instantiate(enemyPrefab, baseSpawnPos + eliteOffset, Quaternion.identity);
-            ConfigureEnemy(eliteEnemy, currentConfig, isElite: true);
+            currentConfig =
+                activeEnemyUpgrades[enemyKey];
+        }
+
+
+        // ========================================================
+        // SPAWN NORMAL ENEMY
+        // ========================================================
+
+        Vector2 baseSpawnPos =
+            GetRandomOffscreenPosition();
+
+
+        GameObject baseEnemy =
+            Instantiate(
+                enemyPrefab,
+                baseSpawnPos,
+                Quaternion.identity
+            );
+
+
+        ConfigureEnemy(
+            baseEnemy,
+            currentConfig,
+            false
+        );
+
+
+        // ========================================================
+        // SPAWN ELITES
+        // ========================================================
+
+        int elitesToSpawn = 0;
+
+
+        if (
+            eliteCountsPerEnemy.ContainsKey(
+                enemyKey
+            )
+        )
+        {
+            elitesToSpawn =
+                eliteCountsPerEnemy[enemyKey];
+        }
+
+
+        for (
+            int i = 0;
+            i < elitesToSpawn;
+            i++
+        )
+        {
+            Vector2 eliteOffset =
+                new Vector2(
+                    Random.Range(
+                        -1.5f,
+                        1.5f
+                    ),
+                    Random.Range(
+                        -1.5f,
+                        1.5f
+                    )
+                );
+
+
+            GameObject eliteEnemy =
+                Instantiate(
+                    enemyPrefab,
+                    baseSpawnPos +
+                    eliteOffset,
+                    Quaternion.identity
+                );
+
+
+            ConfigureEnemy(
+                eliteEnemy,
+                currentConfig,
+                true
+            );
         }
     }
 
-    private void ConfigureEnemy(GameObject enemyObj, EnemyUpgradeData data, bool isElite)
+
+    // ============================================================
+    // CONFIGURE ENEMY
+    // ============================================================
+
+    private void ConfigureEnemy(
+        GameObject enemyObj,
+        EnemyUpgradeData data,
+        bool isElite)
     {
-        // Elite 1.5x Physical Size Scaling
-        if (isElite)
+        if (enemyObj == null)
+            return;
+
+
+        // ========================================================
+        // NORMAL ENEMY
+        // ========================================================
+
+        if (!isElite)
         {
-            enemyObj.transform.localScale *= 1.5f;
+            // ----------------------------------------------------
+            // IMPORTANT:
+            //
+            // A normal enemy starts at its original EnemyData
+            // values.
+            //
+            // Only apply a configuration if it is a REAL
+            // BaseStatBuff.
+            // ----------------------------------------------------
+
+            if (
+                data != null &&
+                data.type ==
+                EnemyUpgradeType.BaseStatBuff
+            )
+            {
+                // The actual stat upgrade is handled by
+                // EnemyUpgradeManager.
+                //
+                // Do NOT call ApplyScaling here.
+            }
+
+
+            return;
         }
 
-        // Calculate Multipliers (Elites stack 2x base and 1.5x excluded rules)
-        float baseMult = isElite ? 2.0f : 1.0f;
-        float excludedMult = isElite ? 1.5f : 1.0f;
 
-        if (data != null)
+        // ========================================================
+        // ELITE ENEMY
+        // ========================================================
+
+        enemyObj.transform.localScale *=
+            1.5f;
+
+
+        float baseMult =
+            2.0f;
+
+
+        float excludedMult =
+            1.5f;
+
+
+        // ========================================================
+        // USE ELITE SCALING DATA
+        // ========================================================
+
+        if (
+            data != null &&
+            data.type ==
+            EnemyUpgradeType.EliteSpawner
+        )
         {
-            baseMult = isElite ? data.baseStatMultiplier * 2f : data.baseStatMultiplier;
-            excludedMult = isElite ? data.excludedStatMultiplier * 1.5f : data.excludedStatMultiplier;
+            baseMult =
+                data.baseStatMultiplier;
+
+
+            excludedMult =
+                data.excludedStatMultiplier;
         }
 
-        // Apply stats via your EnemyController component
-        if (enemyObj.TryGetComponent<IEnemyController>(out var controller))
+
+        // ========================================================
+        // APPLY ELITE SCALING
+        // ========================================================
+
+        if (
+            enemyObj.TryGetComponent<IEnemyController>(
+                out var controller
+            )
+        )
         {
-            controller.ApplyScaling(baseMult, excludedMult);
+            controller.ApplyScaling(
+                baseMult,
+                excludedMult
+            );
         }
     }
+
+
+    // ============================================================
+    // RANDOM OFFSCREEN POSITION
+    // ============================================================
 
     private Vector2 GetRandomOffscreenPosition()
     {
-        float height = mainCamera.orthographicSize * 2f;
-        float width = height * mainCamera.aspect;
+        float height =
+            mainCamera.orthographicSize * 2f;
 
-        float x = Random.Range(-width / 2f, width / 2f);
-        float y = Random.Range(-height / 2f, height / 2f);
 
-        int side = Random.Range(0, 4);
+        float width =
+            height *
+            mainCamera.aspect;
+
+
+        float x =
+            Random.Range(
+                -width / 2f,
+                width / 2f
+            );
+
+
+        float y =
+            Random.Range(
+                -height / 2f,
+                height / 2f
+            );
+
+
+        int side =
+            Random.Range(
+                0,
+                4
+            );
+
+
         Vector2 spawnPosition;
+
 
         switch (side)
         {
             case 0:
-                spawnPosition = new Vector2(mainCamera.transform.position.x - width / 2f - spawnMargin, mainCamera.transform.position.y + y);
+
+                spawnPosition =
+                    new Vector2(
+                        mainCamera.transform.position.x -
+                        width / 2f -
+                        spawnMargin,
+
+                        mainCamera.transform.position.y +
+                        y
+                    );
+
                 break;
+
+
             case 1:
-                spawnPosition = new Vector2(mainCamera.transform.position.x + width / 2f + spawnMargin, mainCamera.transform.position.y + y);
+
+                spawnPosition =
+                    new Vector2(
+                        mainCamera.transform.position.x +
+                        width / 2f +
+                        spawnMargin,
+
+                        mainCamera.transform.position.y +
+                        y
+                    );
+
                 break;
+
+
             case 2:
-                spawnPosition = new Vector2(mainCamera.transform.position.x + x, mainCamera.transform.position.y - height / 2f - spawnMargin);
+
+                spawnPosition =
+                    new Vector2(
+                        mainCamera.transform.position.x +
+                        x,
+
+                        mainCamera.transform.position.y -
+                        height / 2f -
+                        spawnMargin
+                    );
+
                 break;
+
+
             default:
-                spawnPosition = new Vector2(mainCamera.transform.position.x + x, mainCamera.transform.position.y + height / 2f + spawnMargin);
+
+                spawnPosition =
+                    new Vector2(
+                        mainCamera.transform.position.x +
+                        x,
+
+                        mainCamera.transform.position.y +
+                        height / 2f +
+                        spawnMargin
+                    );
+
                 break;
         }
+
 
         return spawnPosition;
     }
 
-    // Called by your AutoUpgradeManager when an upgrade card is chosen
-    public void ApplyEnemyUpgrade(EnemyUpgradeData upgrade)
+
+    // ============================================================
+    // APPLY ENEMY UPGRADE
+    // ============================================================
+
+    public void ApplyEnemyUpgrade(
+        EnemyUpgradeData upgrade)
     {
+        if (upgrade == null)
+            return;
+
+
         switch (upgrade.type)
         {
+            // ====================================================
+            // NEW ENEMY TYPE
+            // ====================================================
+
             case EnemyUpgradeType.NewEnemyType:
-                if (upgrade.enemyPrefab != null)
+
+                if (
+                    upgrade.enemyPrefab != null
+                )
                 {
-                    UnlockEnemy(upgrade.enemyPrefab);
-                    activeEnemyUpgrades[upgrade.enemyPrefab.name] = upgrade;
+                    UnlockEnemy(
+                        upgrade.enemyPrefab
+                    );
+
+
+                    // IMPORTANT:
+                    //
+                    // Do NOT put the NewEnemyType upgrade
+                    // into activeEnemyUpgrades.
+                    //
+                    // Otherwise ConfigureEnemy() thinks
+                    // the new enemy has an active scaling
+                    // upgrade.
                 }
+
                 break;
+
+
+            // ====================================================
+            // NORMAL STAT BUFF
+            // ====================================================
 
             case EnemyUpgradeType.BaseStatBuff:
-                if (upgrade.targetEnemyPrefab != null)
+
+                if (
+                    upgrade.targetEnemyPrefab != null
+                )
                 {
-                    activeEnemyUpgrades[upgrade.targetEnemyPrefab.name] = upgrade;
+                    string key =
+                        upgrade
+                            .targetEnemyPrefab
+                            .name;
+
+
+                    activeEnemyUpgrades[key] =
+                        upgrade;
                 }
+
                 break;
 
+
+            // ====================================================
+            // ELITE SPAWNER
+            // ====================================================
+
             case EnemyUpgradeType.EliteSpawner:
-                if (upgrade.targetEnemyPrefab != null)
+
+                if (
+                    upgrade.targetEnemyPrefab != null
+                )
                 {
-                    string key = upgrade.targetEnemyPrefab.name;
-                    if (!eliteCountsPerEnemy.ContainsKey(key))
+                    string key =
+                        upgrade
+                            .targetEnemyPrefab
+                            .name;
+
+
+                    if (
+                        !eliteCountsPerEnemy
+                            .ContainsKey(key)
+                    )
                     {
-                        eliteCountsPerEnemy[key] = 0;
+                        eliteCountsPerEnemy[key] =
+                            0;
                     }
-                    eliteCountsPerEnemy[key] += upgrade.eliteCountIncrement;
+
+
+                    eliteCountsPerEnemy[key] +=
+                        upgrade.eliteCountIncrement;
                 }
+
                 break;
         }
     }
 
-    public void UnlockEnemy(GameObject enemyPrefab)
+
+    // ============================================================
+    // UNLOCK ENEMY
+    // ============================================================
+
+    public void UnlockEnemy(
+        GameObject enemyPrefab)
     {
         if (enemyPrefab == null)
             return;
 
-        if (!unlockedEnemies.Contains(enemyPrefab))
+
+        if (
+            !unlockedEnemies.Contains(
+                enemyPrefab
+            )
+        )
         {
-            unlockedEnemies.Add(enemyPrefab);
-            
-            string key = enemyPrefab.name;
-            if (!activeEnemyUpgrades.ContainsKey(key))
+            unlockedEnemies.Add(
+                enemyPrefab
+            );
+
+
+            string key =
+                enemyPrefab.name;
+
+
+            // Create an entry for the enemy,
+            // but do NOT give it an upgrade.
+
+            if (
+                !activeEnemyUpgrades.ContainsKey(
+                    key
+                )
+            )
             {
-                activeEnemyUpgrades[key] = null;
+                activeEnemyUpgrades[key] =
+                    null;
             }
         }
     }

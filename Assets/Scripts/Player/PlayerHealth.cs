@@ -86,7 +86,15 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player Died");
-        Time.timeScale = 0f;
+        
+        if (GameEndUI.Instance != null)
+        {
+            GameEndUI.Instance.ShowGameOver();
+        }
+        else
+        {
+            Time.timeScale = 0f;
+        }
     }
 
     public void setMaxHealth(float maxHealth)

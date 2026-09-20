@@ -15,7 +15,7 @@ MonoBehaviour:
   id: mage_ms
   upgradeName: Mage Speed
   description: Increase Mage enemy movement speed by 0.2.
-  icon: {fileID: 0}
+  icon: {fileID: 4378920111037482446, guid: 9c76c8bbc8dc3214f8486ecdda82f747, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}
   targetEnemyPrefab: {fileID: 3100299601003317396, guid: 353ed9bc39b1d434ab2dc7f34d65ff80, type: 3}

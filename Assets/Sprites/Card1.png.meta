@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: ab83c67bc9e842c4ebb407e16118f47c
+guid: 02d575a6a5ba9c547a701bdc40f3c419
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6715957911979874120
-    second: police_0
-  - first:
-      213: 4105265752667475224
-    second: police_1
-  - first:
-      213: 1772789605241533039
-    second: police_2
-  - first:
-      213: 550502714186062493
-    second: police_3
+      213: 5529886436784579953
+    second: Card1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -122,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: police_0
+      name: Card1_0
       rect:
         serializedVersion: 2
-        x: 199
-        y: 735
-        width: 242
-        height: 202
+        x: 24
+        y: 26
+        width: 251
+        height: 389
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 847d8066320e33d50800000000000000
-      internalID: 6715957911979874120
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_1
-      rect:
-        serializedVersion: 2
-        x: 87
-        y: 439
-        width: 66
-        height: 242
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 81d42509375d8f830800000000000000
-      internalID: 4105265752667475224
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_2
-      rect:
-        serializedVersion: 2
-        x: 159
-        y: 159
-        width: 322
-        height: 562
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f623de9d0c63a9810800000000000000
-      internalID: 1772789605241533039
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_3
-      rect:
-        serializedVersion: 2
-        x: 487
-        y: 439
-        width: 66
-        height: 242
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d9ad2f64d47c3a700800000000000000
-      internalID: 550502714186062493
+      spriteID: 175abc86a6a1ebc40800000000000000
+      internalID: 5529886436784579953
       vertices: []
       indices: 
       edges: []
@@ -213,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      police_0: 6715957911979874120
-      police_1: 4105265752667475224
-      police_2: 1772789605241533039
-      police_3: 550502714186062493
+      Card1_0: 5529886436784579953
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

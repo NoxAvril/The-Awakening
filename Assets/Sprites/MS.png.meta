@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 449f028e36868454fac66b5c2ee4c16a
+guid: 9c76c8bbc8dc3214f8486ecdda82f747
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1791783992758969951
-    second: grenade_0
+      213: 4378920111037482446
+    second: MS_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grenade_0
+      name: MS_0
       rect:
         serializedVersion: 2
-        x: 135
-        y: 191
-        width: 370
-        height: 546
+        x: 1
+        y: 1
+        width: 647
+        height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a9de5da3fd4227e0800000000000000
-      internalID: -1791783992758969951
+      spriteID: ec50436f3ac05cc30800000000000000
+      internalID: 4378920111037482446
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      grenade_0: -1791783992758969951
+      MS_0: 4378920111037482446
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

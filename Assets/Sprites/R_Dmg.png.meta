@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: af5c7a5f37a8062468b6c8db5d3d73d7
+guid: 4b449c3a14f979c45b354a4ef4cae5b6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -780189549431665835
-    second: journalist_0
-  - first:
-      213: 5178105254853191283
-    second: journalist_1
-  - first:
-      213: -2532238978688297689
-    second: journalist_2
-  - first:
-      213: 1284779997297806897
-    second: journalist_3
+      213: -533871868093975521
+    second: R_Dmg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: journalist_0
+      name: R_Dmg_0
       rect:
         serializedVersion: 2
-        x: 215
-        y: 735
-        width: 226
-        height: 202
+        x: 1
+        y: 1
+        width: 1082
+        height: 365
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 55b47a80db53c25f0800000000000000
-      internalID: -780189549431665835
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: journalist_1
-      rect:
-        serializedVersion: 2
-        x: 87
-        y: 439
-        width: 66
-        height: 242
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 376ab156b435cd740800000000000000
-      internalID: 5178105254853191283
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: journalist_2
-      rect:
-        serializedVersion: 2
-        x: 159
-        y: 159
-        width: 338
-        height: 562
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 725d2e4b01eabdcd0800000000000000
-      internalID: -2532238978688297689
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: journalist_3
-      rect:
-        serializedVersion: 2
-        x: 503
-        y: 439
-        width: 66
-        height: 242
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 13e8679b99474d110800000000000000
-      internalID: 1284779997297806897
+      spriteID: f143fa25d5e4798f0800000000000000
+      internalID: -533871868093975521
       vertices: []
       indices: 
       edges: []
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      journalist_0: -780189549431665835
-      journalist_1: 5178105254853191283
-      journalist_2: -2532238978688297689
-      journalist_3: 1284779997297806897
+      R_Dmg_0: -533871868093975521
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

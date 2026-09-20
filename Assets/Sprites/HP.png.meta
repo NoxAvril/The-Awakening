@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: f5a36142262747f40add0f2dccfc1ac5
+guid: ea2fe36c8be2d814f9ec15f9574caa4e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7180409166435649439
-    second: red_smoke_0
+      213: -902086654454736923
+    second: HP_0
+  - first:
+      213: 134086666222474253
+    second: HP_1
+  - first:
+      213: -9089433526600752901
+    second: HP_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: red_smoke_0
+      name: HP_0
       rect:
         serializedVersion: 2
-        x: 195
-        y: 111
-        width: 338
-        height: 270
+        x: 3
+        y: 3
+        width: 554
+        height: 466
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f970b5be710f5a360800000000000000
-      internalID: 7180409166435649439
+      spriteID: 5e7da9c97f42b73f0800000000000000
+      internalID: -902086654454736923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HP_1
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 419
+        width: 85
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d049e4dcc1f5cd100800000000000000
+      internalID: 134086666222474253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HP_2
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 443
+        width: 26
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf0af6d8d58dbd180800000000000000
+      internalID: -9089433526600752901
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      red_smoke_0: 7180409166435649439
+      HP_0: -902086654454736923
+      HP_1: 134086666222474253
+      HP_2: -9089433526600752901
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

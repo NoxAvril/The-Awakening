@@ -35,6 +35,25 @@ public class EnemyController : MonoBehaviour, IEnemyController
 
 
     // ============================================================
+    // ORIGINAL BASE STATS
+    // ============================================================
+
+    private float originalMaxHealth;
+
+    private float originalMoveSpeed;
+
+    private float originalCollisionDamage;
+
+    private float originalRangeDamage;
+
+    private float originalAttackInterval;
+
+    private float originalRange;
+
+    private int originalBaseExpReward;
+
+
+    // ============================================================
     // AWAKE
     // ============================================================
 
@@ -58,50 +77,161 @@ public class EnemyController : MonoBehaviour, IEnemyController
                 enemyData.enemyName;
 
 
-            maxHealth =
+            // ====================================================
+            // LOAD ORIGINAL DATA
+            // ====================================================
+
+            originalMaxHealth =
                 enemyData.maxHealth;
 
+            originalMoveSpeed =
+                enemyData.moveSpeed;
+
+            originalCollisionDamage =
+                enemyData.collisionDamage;
+
+            originalRangeDamage =
+                enemyData.rangeDamage;
+
+            originalAttackInterval =
+                enemyData.attackInterval;
+
+            originalRange =
+                enemyData.range;
+
+            originalBaseExpReward =
+                enemyData.baseExpReward;
+
+
+            // ====================================================
+            // SET RUNTIME STATS TO ORIGINAL VALUES
+            // ====================================================
+
+            maxHealth =
+                originalMaxHealth;
 
             currentHealth =
                 maxHealth;
 
-
             moveSpeed =
-                enemyData.moveSpeed;
-
+                originalMoveSpeed;
 
             collisionDamage =
-                enemyData.collisionDamage;
-
+                originalCollisionDamage;
 
             hasRangedAttack =
                 enemyData.hasRangedAttack;
 
-
             rangeDamage =
-                enemyData.rangeDamage;
-
+                originalRangeDamage;
 
             attackInterval =
-                enemyData.attackInterval;
-
+                originalAttackInterval;
 
             range =
-                enemyData.range;
-
+                originalRange;
 
             baseExpReward =
-                enemyData.baseExpReward;
+                originalBaseExpReward;
         }
         else
         {
-            maxHealth = 10f;
+            // ====================================================
+            // FALLBACK VALUES
+            // ====================================================
+
+            originalMaxHealth =
+                10f;
+
+            originalMoveSpeed =
+                1f;
+
+            originalCollisionDamage =
+                1f;
+
+            originalRangeDamage =
+                1f;
+
+            originalAttackInterval =
+                1f;
+
+            originalRange =
+                1f;
+
+            originalBaseExpReward =
+                1;
+
+
+            // ====================================================
+            // SET RUNTIME VALUES
+            // ====================================================
+
+            maxHealth =
+                originalMaxHealth;
 
             currentHealth =
                 maxHealth;
 
-            baseExpReward = 1;
+            moveSpeed =
+                originalMoveSpeed;
+
+            collisionDamage =
+                originalCollisionDamage;
+
+            rangeDamage =
+                originalRangeDamage;
+
+            attackInterval =
+                originalAttackInterval;
+
+            range =
+                originalRange;
+
+            baseExpReward =
+                originalBaseExpReward;
         }
+
+
+        UpdateExpReward();
+    }
+
+
+    // ============================================================
+    // RESET TO ORIGINAL DATA
+    // ============================================================
+
+    public void ResetToOriginalStats()
+    {
+        maxHealth =
+            originalMaxHealth;
+
+
+        currentHealth =
+            maxHealth;
+
+
+        moveSpeed =
+            originalMoveSpeed;
+
+
+        collisionDamage =
+            originalCollisionDamage;
+
+
+        rangeDamage =
+            originalRangeDamage;
+
+
+        attackInterval =
+            originalAttackInterval;
+
+
+        range =
+            originalRange;
+
+
+        baseExpReward =
+            originalBaseExpReward;
 
 
         UpdateExpReward();
@@ -154,7 +284,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
 
 
         // EXP does not receive Elite scaling here.
-        // Elite EXP is handled by the global +0.15 multiplier.
+        // Elite EXP is handled by the global multiplier.
         UpdateExpReward();
     }
 

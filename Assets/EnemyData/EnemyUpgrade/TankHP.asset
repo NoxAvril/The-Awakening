@@ -15,7 +15,7 @@ MonoBehaviour:
   id: tank_HP
   upgradeName: Tank Vitality
   description: Increase Tank enemy HP by 15.
-  icon: {fileID: 0}
+  icon: {fileID: -902086654454736923, guid: ea2fe36c8be2d814f9ec15f9574caa4e, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}
   targetEnemyPrefab: {fileID: 5649299403573654980, guid: 732f073b3dc842243920cd6412b2769f, type: 3}

@@ -15,7 +15,7 @@ MonoBehaviour:
   id: mage_r_dmg
   upgradeName: Mage Range Damage
   description: Increase Mage enemy range damage by 5.
-  icon: {fileID: 0}
+  icon: {fileID: -533871868093975521, guid: 4b449c3a14f979c45b354a4ef4cae5b6, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}
   targetEnemyPrefab: {fileID: 3100299601003317396, guid: 353ed9bc39b1d434ab2dc7f34d65ff80, type: 3}

@@ -15,7 +15,7 @@ MonoBehaviour:
   id: tank_ms
   upgradeName: Tank Speed
   description: Increase Tank enemy movement speed by 0.2.
-  icon: {fileID: 0}
+  icon: {fileID: 4378920111037482446, guid: 9c76c8bbc8dc3214f8486ecdda82f747, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}
   targetEnemyPrefab: {fileID: 5649299403573654980, guid: 732f073b3dc842243920cd6412b2769f, type: 3}

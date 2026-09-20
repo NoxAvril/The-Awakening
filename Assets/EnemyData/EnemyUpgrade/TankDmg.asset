@@ -15,7 +15,7 @@ MonoBehaviour:
   id: tank_dmg
   upgradeName: Tank Damage
   description: Increase Tank enemy damage by 3.
-  icon: {fileID: 0}
+  icon: {fileID: 3939895358237999961, guid: c949b1855c52f7247992c44aa0830130, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}
   targetEnemyPrefab: {fileID: 5649299403573654980, guid: 732f073b3dc842243920cd6412b2769f, type: 3}

@@ -15,7 +15,7 @@ MonoBehaviour:
   id: basic_movespeed
   upgradeName: Basic Speed
   description: Increases Basic enemy movement speed by 0.2.
-  icon: {fileID: 0}
+  icon: {fileID: 4378920111037482446, guid: 9c76c8bbc8dc3214f8486ecdda82f747, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}
   targetEnemyPrefab: {fileID: 6765678486695119926, guid: f99e68718b034e54f9114353143ff0f1, type: 3}

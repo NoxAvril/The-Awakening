@@ -15,7 +15,7 @@ MonoBehaviour:
   id: basic_dmg
   upgradeName: Basic Damage
   description: Increases Basic enemy collision damage by 2.
-  icon: {fileID: 0}
+  icon: {fileID: 3939895358237999961, guid: c949b1855c52f7247992c44aa0830130, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}
   targetEnemyPrefab: {fileID: 6765678486695119926, guid: f99e68718b034e54f9114353143ff0f1, type: 3}
