@@ -8,6 +8,12 @@ public class EnemyFollow : MonoBehaviour
     [Header("Movement")]
     public bool movementEnabled = true;
 
+    [Header("Sprite Direction")]
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    [Tooltip("Your original enemy sprite faces LEFT.")]
+    [SerializeField] private bool spriteFacesLeftByDefault = true;
+
     private EnemyController enemyController;
     private EnemyStatus enemyStatus;
 
@@ -24,6 +30,12 @@ public class EnemyFollow : MonoBehaviour
         enemyStatus = GetComponent<EnemyStatus>();
         enemyController = GetComponent<EnemyController>();
 
+        if (spriteRenderer == null)
+        {
+            spriteRenderer =
+                GetComponent<SpriteRenderer>();
+        }
+
         GameObject playerObject =
             GameObject.FindGameObjectWithTag("Player");
 
@@ -34,7 +46,8 @@ public class EnemyFollow : MonoBehaviour
 
         if (player != null)
         {
-            health = player.GetComponent<PlayerHealth>();
+            health =
+                player.GetComponent<PlayerHealth>();
         }
     }
 
@@ -53,7 +66,9 @@ public class EnemyFollow : MonoBehaviour
         // while keeping this script active for collision damage.
         if (!movementEnabled)
         {
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity =
+                Vector2.zero;
+
             return;
         }
 
@@ -108,6 +123,8 @@ public class EnemyFollow : MonoBehaviour
             rb.linearVelocity =
                 Vector2.zero;
 
+            UpdateSpriteDirection();
+
             return;
         }
 
@@ -116,6 +133,9 @@ public class EnemyFollow : MonoBehaviour
                 player.position -
                 transform.position
             ).normalized;
+
+        // Flip based directly on where the player is.
+        UpdateSpriteDirection(direction);
 
         rb.MovePosition(
             rb.position +
@@ -129,7 +149,42 @@ public class EnemyFollow : MonoBehaviour
     {
         if (damageCooldown > 0f)
         {
-            damageCooldown -= Time.deltaTime;
+            damageCooldown -=
+                Time.deltaTime;
+        }
+    }
+
+    private void UpdateSpriteDirection()
+    {
+        if (player == null)
+            return;
+
+        Vector2 direction =
+            player.position -
+            transform.position;
+
+        UpdateSpriteDirection(direction);
+    }
+
+    private void UpdateSpriteDirection(
+        Vector2 direction
+    )
+    {
+        if (spriteRenderer == null)
+            return;
+
+        // Player is to the RIGHT.
+        if (direction.x > 0.05f)
+        {
+            spriteRenderer.flipX =
+                spriteFacesLeftByDefault;
+        }
+
+        // Player is to the LEFT.
+        else if (direction.x < -0.05f)
+        {
+            spriteRenderer.flipX =
+                !spriteFacesLeftByDefault;
         }
     }
 
@@ -138,17 +193,23 @@ public class EnemyFollow : MonoBehaviour
         knockbackVelocity = force;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(
+        Collision2D collision
+    )
     {
         TryDamagePlayer(collision);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay2D(
+        Collision2D collision
+    )
     {
         TryDamagePlayer(collision);
     }
 
-    private void TryDamagePlayer(Collision2D collision)
+    private void TryDamagePlayer(
+        Collision2D collision
+    )
     {
         GameObject target =
             collision.gameObject;

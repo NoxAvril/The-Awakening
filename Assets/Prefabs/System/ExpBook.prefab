@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExpGem
   expValue: 1
   spriteRenderer: {fileID: 0}
-  tier1Sprite: {fileID: 0}
-  tier2Sprite: {fileID: 0}
-  tier3Sprite: {fileID: 0}
+  tier1Sprite: {fileID: 21300000, guid: a3aea78f056e6064db00507c06adf695, type: 3}
+  tier2Sprite: {fileID: 21300000, guid: 8dcf85e89f485d74bbf7fc9219aa6dec, type: 3}
+  tier3Sprite: {fileID: 3843231544584785974, guid: b3a33edd8fe3bdf45b6078917add1cc7, type: 3}
   magnetRadius: 3.5
   flySpeed: 10

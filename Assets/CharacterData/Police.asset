@@ -14,6 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Police
   startingWeapon: {fileID: 2751630934951482756, guid: a9e3e30270b9340448ccbd4ca5be8a60, type: 3}
+  idleSprites:
+  - {fileID: 8414587910850223613, guid: 734361ce17a774b4a8dd41c145c5d734, type: 3}
+  - {fileID: 4251670749432742623, guid: 734361ce17a774b4a8dd41c145c5d734, type: 3}
+  - {fileID: 3813699670374938126, guid: 734361ce17a774b4a8dd41c145c5d734, type: 3}
+  - {fileID: -3136198160693502230, guid: 734361ce17a774b4a8dd41c145c5d734, type: 3}
+  - {fileID: 2405060493771111413, guid: 734361ce17a774b4a8dd41c145c5d734, type: 3}
+  - {fileID: -2276702274234406390, guid: 734361ce17a774b4a8dd41c145c5d734, type: 3}
+  - {fileID: -3424913918697794302, guid: 734361ce17a774b4a8dd41c145c5d734, type: 3}
+  movingSprites:
+  - {fileID: -8920387095205236620, guid: 10b44658570cf16459224f23a372fbe2, type: 3}
+  - {fileID: -8449370018922370068, guid: 10b44658570cf16459224f23a372fbe2, type: 3}
+  - {fileID: 5187966239271279324, guid: 10b44658570cf16459224f23a372fbe2, type: 3}
+  - {fileID: 3372498680825198124, guid: 10b44658570cf16459224f23a372fbe2, type: 3}
+  - {fileID: 3482814855455240089, guid: 10b44658570cf16459224f23a372fbe2, type: 3}
+  - {fileID: 5165311951802483634, guid: 10b44658570cf16459224f23a372fbe2, type: 3}
+  animatorController: {fileID: 9100000, guid: c4c251bc92e18d643a813c61e506d768, type: 2}
   movespeed: 5
   critChance: 0
   critMultiplier: 2

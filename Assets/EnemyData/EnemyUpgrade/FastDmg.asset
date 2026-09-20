@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FastDmg
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: fast_dmg
-  upgradeName: Fast Damage
-  description: Increase Fast Enemy damage by 2.
+  upgradeName: Nightgaunt's Fangs
+  description: Increase Nightgaunt's damage by 2.
   icon: {fileID: 3939895358237999961, guid: c949b1855c52f7247992c44aa0830130, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

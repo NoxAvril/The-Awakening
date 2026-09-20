@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: FastEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: Unlock_fast
-  upgradeName: Fast
-  description: Add a new fast enemy that track you down.
-  icon: {fileID: 0}
+  upgradeName: Nightgaunt
+  description: Add Nightgaunt that track you down.
+  icon: {fileID: -5107228447335233080, guid: ec9668cd7cddabb4eaf992f51f53b5dc, type: 3}
   type: 0
   enemyPrefab: {fileID: 5649299403573654980, guid: e6b4e45048c035046ab26a5f0751573a, type: 3}
   targetEnemyPrefab: {fileID: 0}

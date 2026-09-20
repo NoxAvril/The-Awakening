@@ -1,0 +1,993 @@
+fileFormatVersion: 2
+guid: af00c812339c7804992f1e3ff5fb881a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3430562040630669873
+    second: Eldritch Gothic Game UI Sprite Sheet_0
+  - first:
+      213: -4926719700454375411
+    second: Eldritch Gothic Game UI Sprite Sheet_1
+  - first:
+      213: 6125586791616042707
+    second: Eldritch Gothic Game UI Sprite Sheet_2
+  - first:
+      213: -8803400540622905443
+    second: Eldritch Gothic Game UI Sprite Sheet_3
+  - first:
+      213: -7363416127480827431
+    second: Eldritch Gothic Game UI Sprite Sheet_4
+  - first:
+      213: 3710626975319320340
+    second: Eldritch Gothic Game UI Sprite Sheet_5
+  - first:
+      213: 5582059323196889773
+    second: Eldritch Gothic Game UI Sprite Sheet_6
+  - first:
+      213: 2636127120110898009
+    second: Eldritch Gothic Game UI Sprite Sheet_7
+  - first:
+      213: 3084978047903496324
+    second: Eldritch Gothic Game UI Sprite Sheet_8
+  - first:
+      213: 8501932265077891987
+    second: Eldritch Gothic Game UI Sprite Sheet_9
+  - first:
+      213: -6720268349298059993
+    second: Eldritch Gothic Game UI Sprite Sheet_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 812
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 132fab3000ecb9f20800000000000000
+      internalID: 3430562040630669873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 812
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d008f7a0986c0abb0800000000000000
+      internalID: -4926719700454375411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 812
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d659137bb4720550800000000000000
+      internalID: 6125586791616042707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 812
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9f90b8c9d904d580800000000000000
+      internalID: -8803400540622905443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 812
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d17f1c8b04efc990800000000000000
+      internalID: -7363416127480827431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 812
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 417e3e5039bce7330800000000000000
+      internalID: 3710626975319320340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 650
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daade422165777d40800000000000000
+      internalID: 5582059323196889773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 650
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95bcbf026a7659420800000000000000
+      internalID: 2636127120110898009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 650
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4887a2d803b00da20800000000000000
+      internalID: 3084978047903496324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 650
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3936664995eecf570800000000000000
+      internalID: 8501932265077891987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 650
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 725d9c4ba8fccb2a0800000000000000
+      internalID: -6720268349298059993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 650
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a04d8af5d129f8446a3efacd3a9dcd04
+      internalID: 704654226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 488
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c48784f5dc92cf54588564f81068af1e
+      internalID: 1414892281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 488
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c1f9e27b1a82c343887c3ee7c4ea46a
+      internalID: 1002689918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 488
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b751a1fd92f88d4abf6167158460065
+      internalID: 601269462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 488
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b4ca0cf588eff8418a786f345377eaa
+      internalID: -764869272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 488
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2f5408992e8f484d8307892cd7e0e76
+      internalID: 1744656187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 488
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c154eee989fb2ed4fbf77be353f8a431
+      internalID: 1325172394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 326
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f423fc7e9b97944893a5dee48886e25
+      internalID: 711932991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 326
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2858ae8bd23db2543a1d47c4abb04ce0
+      internalID: -547432974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 326
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6842e5550e2211c44b4c36d82501a400
+      internalID: -2130526680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 326
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8ed3fe1177910748bdfee1451ab6e1c
+      internalID: -627626209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 326
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 967c35b7b8d30df48bdaf603071eb506
+      internalID: -1983959530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 326
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ace1f621e02c31c40b9088980c0cd83d
+      internalID: 583271100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 164
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 643a5f37828961840b5ed33ad718411b
+      internalID: 1875519547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 164
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6caffdd5b59bfd74d8b314ac8940443c
+      internalID: -795240908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 164
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3672abde40058f6489ca0e365a7883bc
+      internalID: -2052155242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 164
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3871916ce0a1d04ab9fdcf4e1c492d8
+      internalID: 341908043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 164
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16595488d5b440e49a2f5e0562b3ce9f
+      internalID: 1329024931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 164
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfcd2d436ffdc0f48b11e70366764b7d
+      internalID: -1870287196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 2
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d879963fa00e49545bc47a9bc9922a41
+      internalID: -832347050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 2
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17e168a902e9183418e5e19780c0db5a
+      internalID: 1810528016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 2
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b75bbcfbb16a36940af29ab191282919
+      internalID: -1038359427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 2
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1725618f687938249ade65f8cb9d6d29
+      internalID: -1137381662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 2
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60be5e945f6820640ad369ee2d038c8d
+      internalID: 597341569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eldritch Gothic Game UI Sprite Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 2
+        width: 251
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50a78480987197409f65cf45c4590cc
+      internalID: 555798404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f90eda18962108e4babd44d3495f7db3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":251.0,"y":162.0},"gridSpriteOffset":{"x":30.0,"y":50.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Eldritch Gothic Game UI Sprite Sheet_0: 3430562040630669873
+      Eldritch Gothic Game UI Sprite Sheet_1: -4926719700454375411
+      Eldritch Gothic Game UI Sprite Sheet_10: -6720268349298059993
+      Eldritch Gothic Game UI Sprite Sheet_11: 704654226
+      Eldritch Gothic Game UI Sprite Sheet_12: 1414892281
+      Eldritch Gothic Game UI Sprite Sheet_13: 1002689918
+      Eldritch Gothic Game UI Sprite Sheet_14: 601269462
+      Eldritch Gothic Game UI Sprite Sheet_15: -764869272
+      Eldritch Gothic Game UI Sprite Sheet_16: 1744656187
+      Eldritch Gothic Game UI Sprite Sheet_17: 1325172394
+      Eldritch Gothic Game UI Sprite Sheet_18: 711932991
+      Eldritch Gothic Game UI Sprite Sheet_19: -547432974
+      Eldritch Gothic Game UI Sprite Sheet_2: 6125586791616042707
+      Eldritch Gothic Game UI Sprite Sheet_20: -2130526680
+      Eldritch Gothic Game UI Sprite Sheet_21: -627626209
+      Eldritch Gothic Game UI Sprite Sheet_22: -1983959530
+      Eldritch Gothic Game UI Sprite Sheet_23: 583271100
+      Eldritch Gothic Game UI Sprite Sheet_24: 1875519547
+      Eldritch Gothic Game UI Sprite Sheet_25: -795240908
+      Eldritch Gothic Game UI Sprite Sheet_26: -2052155242
+      Eldritch Gothic Game UI Sprite Sheet_27: 341908043
+      Eldritch Gothic Game UI Sprite Sheet_28: 1329024931
+      Eldritch Gothic Game UI Sprite Sheet_29: -1870287196
+      Eldritch Gothic Game UI Sprite Sheet_3: -8803400540622905443
+      Eldritch Gothic Game UI Sprite Sheet_30: -832347050
+      Eldritch Gothic Game UI Sprite Sheet_31: 1810528016
+      Eldritch Gothic Game UI Sprite Sheet_32: -1038359427
+      Eldritch Gothic Game UI Sprite Sheet_33: -1137381662
+      Eldritch Gothic Game UI Sprite Sheet_34: 597341569
+      Eldritch Gothic Game UI Sprite Sheet_35: 555798404
+      Eldritch Gothic Game UI Sprite Sheet_4: -7363416127480827431
+      Eldritch Gothic Game UI Sprite Sheet_5: 3710626975319320340
+      Eldritch Gothic Game UI Sprite Sheet_6: 5582059323196889773
+      Eldritch Gothic Game UI Sprite Sheet_7: 2636127120110898009
+      Eldritch Gothic Game UI Sprite Sheet_8: 3084978047903496324
+      Eldritch Gothic Game UI Sprite Sheet_9: 8501932265077891987
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

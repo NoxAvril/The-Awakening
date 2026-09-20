@@ -14,79 +14,191 @@ public class Grenade : Weapon
     protected override void Awake()
     {
         base.Awake();
-        SetAreaDamage(true, area > 0 ? area : 1.8f);
+
+        SetAreaDamage(
+            true,
+            area > 0 ? area : 1.8f
+        );
     }
 
     public override void Attack()
     {
-        Vector3 targetPos = GetRandomTargetPosition();
-        StartCoroutine(ThrowGrenade(transform.position, targetPos));
+        Vector3 targetPos =
+            GetRandomTargetPosition();
+
+        StartCoroutine(
+            ThrowGrenade(
+                transform.position,
+                targetPos
+            )
+        );
     }
 
     private Vector3 GetRandomTargetPosition()
     {
-        // Always pick a random spot around the player within range (minimum distance of 1.5 units)
-        float randomDistance = Random.Range(1.5f, Mathf.Max(1.6f, range));
-        Vector2 randomDir = Random.insideUnitCircle.normalized * randomDistance;
-        return transform.position + (Vector3)randomDir;
+        float randomDistance =
+            Random.Range(
+                1.5f,
+                Mathf.Max(
+                    1.6f,
+                    range
+                )
+            );
+
+        Vector2 randomDir =
+            Random.insideUnitCircle.normalized *
+            randomDistance;
+
+        return transform.position +
+               (Vector3)randomDir;
     }
 
-    private IEnumerator ThrowGrenade(Vector3 startPos, Vector3 targetPos)
+    private IEnumerator ThrowGrenade(
+        Vector3 startPos,
+        Vector3 targetPos
+    )
     {
-        GameObject grenadeObj = new GameObject("GrenadeProjectile");
-        grenadeObj.transform.position = startPos;
+        GameObject grenadeObj =
+            new GameObject(
+                "GrenadeProjectile"
+            );
+
+        grenadeObj.transform.position =
+            startPos;
 
         if (grenadeSprite != null)
         {
-            SpriteRenderer sr = grenadeObj.AddComponent<SpriteRenderer>();
-            sr.sprite = grenadeSprite;
-            sr.sortingLayerName = "Default";
+            SpriteRenderer sr =
+                grenadeObj.AddComponent<
+                    SpriteRenderer
+                >();
+
+            sr.sprite =
+                grenadeSprite;
+
+            sr.sortingLayerName =
+                "Default";
+
             sr.sortingOrder = 5;
         }
 
         if (indicatorPrefab != null)
         {
-            GameObject ind = Instantiate(indicatorPrefab, targetPos, Quaternion.identity);
-            if (ind.TryGetComponent<AOEIndicator>(out var aoe))
+            GameObject ind =
+                Instantiate(
+                    indicatorPrefab,
+                    targetPos,
+                    Quaternion.identity
+                );
+
+            if (
+                ind.TryGetComponent<AOEIndicator>(
+                    out var aoe
+                )
+            )
             {
-                aoe.Setup(area, new Color(1f, 1f, 1f, 0.4f), throwDuration);
+                aoe.Setup(
+                    area,
+                    new Color(
+                        1f,
+                        1f,
+                        1f,
+                        0.4f
+                    ),
+                    throwDuration
+                );
             }
         }
 
         float timer = 0f;
-        while (timer < throwDuration)
-        {
-            timer += Time.deltaTime;
-            float progress = timer / throwDuration;
 
-            Vector3 currentPos = Vector3.Lerp(startPos, targetPos, progress);
-            currentPos.y += Mathf.Sin(progress * Mathf.PI) * arcHeight;
+        while (
+            timer <
+            throwDuration
+        )
+        {
+            timer +=
+                Time.deltaTime;
+
+            float progress =
+                timer /
+                throwDuration;
+
+            Vector3 currentPos =
+                Vector3.Lerp(
+                    startPos,
+                    targetPos,
+                    progress
+                );
+
+            currentPos.y +=
+                Mathf.Sin(
+                    progress *
+                    Mathf.PI
+                ) *
+                arcHeight;
 
             if (grenadeObj != null)
             {
-                grenadeObj.transform.position = currentPos;
-                grenadeObj.transform.Rotate(0f, 0f, 360f * Time.deltaTime);
+                grenadeObj.transform.position =
+                    currentPos;
+
+                grenadeObj.transform.Rotate(
+                    0f,
+                    0f,
+                    360f *
+                    Time.deltaTime
+                );
             }
 
             yield return null;
         }
 
         Explode(targetPos);
-        if (grenadeObj != null) Destroy(grenadeObj);
+
+        if (grenadeObj != null)
+            Destroy(grenadeObj);
     }
 
-    private void Explode(Vector3 position)
+    private void Explode(
+        Vector3 position
+    )
     {
-        float finalDamage = GetCalculatedDamage();
-        Collider2D[] blastHits = Physics2D.OverlapCircleAll(position, area);
+        float finalDamage =
+            GetCalculatedDamage();
 
-        foreach (var hit in blastHits)
+        Collider2D[] blastHits =
+            Physics2D.OverlapCircleAll(
+                position,
+                area
+            );
+
+        foreach (
+            Collider2D hit
+            in blastHits
+        )
         {
-            if (hit.CompareTag("Enemy") && hit.TryGetComponent<EnemyHealth>(out var enemy))
+            if (
+                hit.CompareTag("Enemy") &&
+                hit.TryGetComponent<
+                    EnemyHealth
+                >(out var enemy)
+            )
             {
-                Vector2 dir = (hit.transform.position - position).normalized;
-                enemy.TakeDamage(finalDamage, dir * knockback);
+                Vector2 dir =
+                    (
+                        hit.transform.position -
+                        position
+                    ).normalized;
+
+                enemy.TakeDamage(
+                    finalDamage,
+                    dir * knockback
+                );
             }
         }
+
+        // PLAY GRENADE EXPLOSION SOUND HERE
+        PlayAttackSound();
     }
 }

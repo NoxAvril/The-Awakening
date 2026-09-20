@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FastHP
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: fast_HP
-  upgradeName: Fast Vitality
-  description: Increase fast enemy HP by 7.
+  upgradeName: Nightgaunt's Blood
+  description: Increase Nightgaunt's HP by 7.
   icon: {fileID: -902086654454736923, guid: ea2fe36c8be2d814f9ec15f9574caa4e, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

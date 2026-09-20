@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TankEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: Unlock_Tank
-  upgradeName: Tank
-  description: A new tankie enemy that track you slowly.
-  icon: {fileID: 0}
+  upgradeName: Shoggoth
+  description: Add Shoggoth that track you slowly.
+  icon: {fileID: -7620671396667263542, guid: 621ae32b7ec26cd4e8411712b4f91e31, type: 3}
   type: 0
   enemyPrefab: {fileID: 5649299403573654980, guid: 732f073b3dc842243920cd6412b2769f, type: 3}
   targetEnemyPrefab: {fileID: 0}

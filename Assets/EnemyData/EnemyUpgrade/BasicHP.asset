@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BasicHP
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: basic_hp
-  upgradeName: Basic Vitality
-  description: Increases the Basic enemy's health by 5.
+  upgradeName: Deep One's Tide
+  description: Increases the Deep One's health by 5.
   icon: {fileID: -902086654454736923, guid: ea2fe36c8be2d814f9ec15f9574caa4e, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

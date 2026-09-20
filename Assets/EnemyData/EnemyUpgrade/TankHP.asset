@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TankHP
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: tank_HP
-  upgradeName: Tank Vitality
-  description: Increase Tank enemy HP by 15.
+  upgradeName: Shoggoth's Immortality
+  description: Increase Shoggoth's HP by 15.
   icon: {fileID: -902086654454736923, guid: ea2fe36c8be2d814f9ec15f9574caa4e, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

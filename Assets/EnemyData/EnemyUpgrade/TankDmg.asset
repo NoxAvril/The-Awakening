@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TankDmg
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: tank_dmg
-  upgradeName: Tank Damage
-  description: Increase Tank enemy damage by 3.
+  upgradeName: 'Shoggoth''s Acid '
+  description: Increase Shoggoth's damage by 3.
   icon: {fileID: 3939895358237999961, guid: c949b1855c52f7247992c44aa0830130, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

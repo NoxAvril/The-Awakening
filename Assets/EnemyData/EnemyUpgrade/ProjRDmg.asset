@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ProjRDmg
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: proj_r_dmg
-  upgradeName: Projectile Range Damage
-  description: Increase Projectile enemy range damage by 3.
+  upgradeName: Mi-Go's Energy
+  description: Increase Mi-Go's range damage by 3.
   icon: {fileID: -533871868093975521, guid: 4b449c3a14f979c45b354a4ef4cae5b6, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

@@ -5,67 +5,98 @@ public abstract class Weapon : MonoBehaviour
     [Header("Base Weapon Stats")]
     public float damage = 1f;
     public float attackRate = 1f;
-
-    // Maximum attack/projectile distance.
     public float range = 1f;
-
-    // Knockback force applied to enemies.
     public float knockback = 0f;
-
-    // Stun duration in seconds.
     public float stun = 0f;
-
 
     [Header("Behavior Properties")]
     public float area = 0f;
-
     public int pierce = 0;
-
     public int bounce = 0;
-
     public bool piercing = false;
-
     public bool bouncing = false;
-
     public bool areaDamage = false;
 
+    [Header("Attack Sound")]
+    [Tooltip("Leave empty if this weapon should have no attack sound.")]
+    [SerializeField] protected AudioClip attackSound;
+
+    [SerializeField, Range(0f, 1f)]
+    protected float attackSoundVolume = 1f;
+
+    [Tooltip("Optional. If empty, one will be created automatically.")]
+    [SerializeField] protected AudioSource audioSource;
 
     [Header("Timer & References")]
     protected float attackTimer;
-
     protected Character character;
-
     protected PlayerMovement playerMovement;
-
-
-    // ============================================================
-    // INITIALIZATION
-    // ============================================================
 
     protected virtual void Awake()
     {
-        character =
-            GetComponentInParent<Character>();
+        character = GetComponentInParent<Character>();
+        playerMovement = GetComponentInParent<PlayerMovement>();
 
-        playerMovement =
-            GetComponentInParent<PlayerMovement>();
+        SetupAudioSource();
     }
 
+    private void SetupAudioSource()
+    {
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
 
-    // ============================================================
-    // WEAPON UPDATE
-    // ============================================================
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.spatialBlend = 0f;
+        audioSource.volume = attackSoundVolume;
+    }
+
+    protected void PlayAttackSound()
+    {
+        if (attackSound == null)
+            return;
+
+        if (audioSource == null)
+            return;
+
+        // Stop the previous sound immediately.
+        // This prevents sounds from stacking.
+        audioSource.Stop();
+
+        // Play only one copy of the sound.
+        audioSource.PlayOneShot(
+            attackSound,
+            attackSoundVolume
+        );
+    }
+
+    protected void StopAttackSound()
+    {
+        if (audioSource == null)
+            return;
+
+        audioSource.Stop();
+    }
 
     protected virtual void Update()
     {
+        // If the game is paused, stop weapon sound immediately.
+        if (Time.timeScale == 0f)
+        {
+            StopAttackSound();
+            return;
+        }
+
         attackTimer -= Time.deltaTime;
 
         if (attackTimer <= 0f)
         {
             Attack();
 
-            float finalAttackSpeed =
-                attackRate;
+            float finalAttackSpeed = attackRate;
 
             if (character != null)
             {
@@ -82,17 +113,7 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-
-    // ============================================================
-    // ATTACK
-    // ============================================================
-
     public abstract void Attack();
-
-
-    // ============================================================
-    // DAMAGE
-    // ============================================================
 
     public virtual float GetCalculatedDamage()
     {
@@ -103,8 +124,10 @@ public abstract class Weapon : MonoBehaviour
             finalDamage *=
                 character.getDamageMultiplier();
 
-            if (Random.value <
-                character.getCritChance() / 100f)
+            if (
+                Random.value <
+                character.getCritChance() / 100f
+            )
             {
                 finalDamage *=
                     character.getCritMultiplier();
@@ -114,77 +137,61 @@ public abstract class Weapon : MonoBehaviour
         return finalDamage;
     }
 
-
-    // ============================================================
-    // PIERCE
-    // ============================================================
-
     public void SetPiercing(
         bool enabled,
-        int amount)
+        int amount
+    )
     {
-        // Cannot combine with bounce or AOE.
         if (bouncing || areaDamage)
             return;
 
-        pierce =
-            Mathf.Max(0, amount);
+        pierce = Mathf.Max(0, amount);
 
         piercing =
             enabled &&
             pierce > 0;
     }
 
-
-    // ============================================================
-    // BOUNCE
-    // ============================================================
-
     public void SetBouncing(
         bool enabled,
-        int amount)
+        int amount
+    )
     {
-        // Cannot combine with pierce or AOE.
         if (piercing || areaDamage)
             return;
 
-        bounce =
-            Mathf.Max(0, amount);
+        bounce = Mathf.Max(0, amount);
 
         bouncing =
             enabled &&
             bounce > 0;
     }
 
-
-    // ============================================================
-    // AOE
-    // ============================================================
-
     public void SetAreaDamage(
         bool enabled,
-        float AOE)
+        float AOE
+    )
     {
-        // Cannot combine with pierce or bounce.
         if (piercing || bouncing)
             return;
 
-        areaDamage =
-            enabled;
+        areaDamage = enabled;
 
         area =
-            Mathf.Max(0, AOE);
+            Mathf.Max(
+                0,
+                AOE
+            );
     }
 
-
     public void ApplyAOEModifier(
-        float amount)
+        float amount
+    )
     {
         if (amount <= 0f)
             return;
 
         area += amount;
-
         areaDamage = true;
 
         transform.localScale +=
@@ -194,18 +201,6 @@ public abstract class Weapon : MonoBehaviour
                 0f
             );
     }
-
-
-    // ============================================================
-    // NORMAL WEAPON LEVEL UP
-    // ============================================================
-    //
-    // IMPORTANT:
-    // Weapon Level Up ONLY increases damage.
-    //
-    // Range, knockback and stun are separate upgrades.
-    //
-    // ============================================================
 
     public virtual bool LevelUp()
     {
@@ -218,13 +213,9 @@ public abstract class Weapon : MonoBehaviour
         return true;
     }
 
-
-    // ============================================================
-    // RANGE UPGRADE
-    // ============================================================
-
     public virtual bool IncreaseRange(
-        float amount)
+        float amount
+    )
     {
         if (amount <= 0f)
             return false;
@@ -238,13 +229,9 @@ public abstract class Weapon : MonoBehaviour
         return true;
     }
 
-
-    // ============================================================
-    // KNOCKBACK UPGRADE
-    // ============================================================
-
     public virtual bool IncreaseKnockback(
-        float amount)
+        float amount
+    )
     {
         if (amount <= 0f)
             return false;
@@ -258,13 +245,9 @@ public abstract class Weapon : MonoBehaviour
         return true;
     }
 
-
-    // ============================================================
-    // STUN UPGRADE
-    // ============================================================
-
     public virtual bool IncreaseStun(
-        float amount)
+        float amount
+    )
     {
         if (amount <= 0f)
             return false;
@@ -276,5 +259,15 @@ public abstract class Weapon : MonoBehaviour
         );
 
         return true;
+    }
+
+    protected virtual void OnDisable()
+    {
+        StopAttackSound();
+    }
+
+    protected virtual void OnDestroy()
+    {
+        StopAttackSound();
     }
 }

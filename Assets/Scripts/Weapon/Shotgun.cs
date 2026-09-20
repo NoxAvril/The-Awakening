@@ -7,24 +7,50 @@ public class Shotgun : GunWeapon
 
     public override void Attack()
     {
-        Vector2 direction = getAimDirection();
+        Vector2 direction =
+            getAimDirection();
 
-        for (int i = 0; i < bulletCount; i++)
+        for (
+            int i = 0;
+            i < bulletCount;
+            i++
+        )
         {
             float angle;
 
-            if (bulletCount == 1)
+            if (
+                bulletCount == 1
+            )
             {
                 angle = 0f;
             }
             else
             {
-                angle = Mathf.Lerp(-spread / 2f, spread / 2f, (float)i / (bulletCount - 1f));
+                angle =
+                    Mathf.Lerp(
+                        -spread / 2f,
+                        spread / 2f,
+                        (float)i /
+                        (bulletCount - 1f)
+                    );
             }
-            
-            Vector2 bulletDirection = Quaternion.Euler(0f, 0f, angle) * direction;
 
-            FireBullet(bulletDirection);
+            Vector2 bulletDirection =
+                Quaternion.Euler(
+                    0f,
+                    0f,
+                    angle
+                ) * direction;
+
+            // Only the first pellet triggers
+            // the shotgun sound.
+            bool playSound =
+                i == 0;
+
+            FireBullet(
+                bulletDirection,
+                playSound
+            );
         }
     }
 }

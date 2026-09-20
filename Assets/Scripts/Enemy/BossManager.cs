@@ -17,6 +17,18 @@ public class BossManager : MonoBehaviour
     [Header("Boss Movement")]
     [SerializeField] private float speedDifference = 0.25f;
 
+    [Header("Boss Animation")]
+    [Tooltip(
+        "Animator Bool used by bosses that have separate left/right animations."
+    )]
+    [SerializeField] private string movingLeftParameter = "IsMovingLeft";
+
+    [Tooltip(
+        "Used by bosses that do NOT have a left animation. " +
+        "The sprite will be flipped instead."
+    )]
+    [SerializeField] private bool flipSpriteForSingleAnimationBoss = true;
+
     [Header("Spawn Settings")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float spawnMargin = 2f;
@@ -33,7 +45,13 @@ public class BossManager : MonoBehaviour
     private PlayerMovement playerMovement;
 
     private Rigidbody2D bossRigidbody;
+
     private EnemyController bossEnemyController;
+
+    private Animator bossAnimator;
+    private SpriteRenderer bossSpriteRenderer;
+
+    private bool bossUsesLeftRightAnimations = false;
 
     private void Start()
     {
@@ -43,6 +61,13 @@ public class BossManager : MonoBehaviour
         }
 
         FindPlayer();
+
+        // Make sure gameplay music is playing
+        // when the level starts.
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.PlayGameplayMusic();
+        }
     }
 
     private void Update()
@@ -64,6 +89,7 @@ public class BossManager : MonoBehaviour
             if (!bossDefeatedCalled)
             {
                 bossDefeatedCalled = true;
+
                 HandleBossDefeated();
             }
 
@@ -104,7 +130,8 @@ public class BossManager : MonoBehaviour
             return;
         }
 
-        player = playerObject.transform;
+        player =
+            playerObject.transform;
 
         playerHealth =
             playerObject.GetComponent<PlayerHealth>();
@@ -167,12 +194,89 @@ public class BossManager : MonoBehaviour
 
         bossSpawned = true;
 
+        // Find the boss components.
+        SetupBossAnimation();
+
+        // Switch from gameplay music
+        // to boss music.
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.PlayBossMusic();
+        }
+
         SetupBoss();
 
         Debug.Log(
             "[BossManager] Boss spawned at: " +
             spawnPosition
         );
+    }
+
+    private void SetupBossAnimation()
+    {
+        if (activeBoss == null)
+            return;
+
+        // Find Animator on the boss or its children.
+        bossAnimator =
+            activeBoss.GetComponentInChildren<Animator>();
+
+        // Find SpriteRenderer on the boss or its children.
+        bossSpriteRenderer =
+            activeBoss.GetComponentInChildren<SpriteRenderer>();
+
+        bossUsesLeftRightAnimations = false;
+
+        // Check whether this Animator actually has
+        // the IsMovingLeft parameter.
+        if (bossAnimator != null)
+        {
+            AnimatorControllerParameter[] parameters =
+                bossAnimator.parameters;
+
+            foreach (
+                AnimatorControllerParameter parameter
+                in parameters
+            )
+            {
+                if (
+                    parameter.name ==
+                    movingLeftParameter &&
+                    parameter.type ==
+                    AnimatorControllerParameterType.Bool
+                )
+                {
+                    bossUsesLeftRightAnimations = true;
+                    break;
+                }
+            }
+        }
+
+        if (bossUsesLeftRightAnimations)
+        {
+            Debug.Log(
+                "[BossManager] Boss uses LEFT/RIGHT animations."
+            );
+
+            // Start facing right.
+            bossAnimator.SetBool(
+                movingLeftParameter,
+                false
+            );
+        }
+        else
+        {
+            Debug.Log(
+                "[BossManager] Boss does not have '" +
+                movingLeftParameter +
+                "'. Using SpriteRenderer flip instead."
+            );
+
+            if (bossSpriteRenderer != null)
+            {
+                bossSpriteRenderer.flipX = false;
+            }
+        }
     }
 
     private void SetupBoss()
@@ -186,25 +290,19 @@ public class BossManager : MonoBehaviour
         bossEnemyController =
             activeBoss.GetComponent<EnemyController>();
 
-        /*
-         * EnemyFollow normally controls enemy movement
-         * AND enemy collision damage.
-         *
-         * We only disable its movement.
-         * This keeps its collision damage active.
-         */
         EnemyFollow enemyFollow =
             activeBoss.GetComponent<EnemyFollow>();
 
         if (enemyFollow != null)
         {
+            // Stop the normal EnemyFollow movement.
+            // BossManager moves the boss manually.
             enemyFollow.movementEnabled = false;
         }
         else
         {
             Debug.LogWarning(
-                "[BossManager] Boss does not have EnemyFollow. " +
-                "Boss collision damage will not use EnemyFollow."
+                "[BossManager] Boss does not have EnemyFollow."
             );
         }
 
@@ -215,19 +313,13 @@ public class BossManager : MonoBehaviour
             highestEnemyHealth *
             normalBossHealthMultiplier;
 
-        /*
-         * Arena bosses have 2x the normal boss health.
-         */
+        // Arena bosses have 2x the normal boss health.
         if (IsArenaLevel())
         {
             bossHealth *=
                 arenaBossHealthMultiplier;
         }
 
-        /*
-         * Boss damage is 10% of the player's
-         * max health at the moment the boss spawns.
-         */
         float bossDamage = 0f;
 
         if (playerHealth != null)
@@ -277,15 +369,15 @@ public class BossManager : MonoBehaviour
 
         float highestHealth = 0f;
 
-        foreach (EnemyController enemy in enemies)
+        foreach (
+            EnemyController enemy
+            in enemies
+        )
         {
             if (enemy == null)
                 continue;
 
-            /*
-             * Don't use the boss itself when calculating
-             * the highest normal enemy HP.
-             */
+            // Don't count the boss itself.
             if (enemy.gameObject == activeBoss)
                 continue;
 
@@ -296,9 +388,8 @@ public class BossManager : MonoBehaviour
             }
         }
 
-        /*
-         * Fallback if there are no enemies currently spawned.
-         */
+        // Fallback if there are no enemies
+        // alive when the boss spawns.
         if (highestHealth <= 0f)
         {
             highestHealth = 10f;
@@ -320,9 +411,6 @@ public class BossManager : MonoBehaviour
         if (player == null)
             return;
 
-        /*
-         * Get the player's CURRENT movement speed.
-         */
         float playerSpeed = 0f;
 
         if (playerMovement != null)
@@ -331,13 +419,12 @@ public class BossManager : MonoBehaviour
                 playerMovement.GetCurrentMoveSpeed();
         }
 
-        /*
-         * Boss is always 0.25 slower than the player.
-         */
+        // Boss is always 0.25 slower than player.
         float bossSpeed =
             Mathf.Max(
                 0f,
-                playerSpeed - speedDifference
+                playerSpeed -
+                speedDifference
             );
 
         Vector2 direction =
@@ -354,6 +441,9 @@ public class BossManager : MonoBehaviour
             return;
         }
 
+        // Update the boss visual direction.
+        UpdateBossDirection(direction);
+
         bossRigidbody.MovePosition(
             bossRigidbody.position +
             direction *
@@ -362,18 +452,77 @@ public class BossManager : MonoBehaviour
         );
     }
 
+    private void UpdateBossDirection(
+        Vector2 direction
+    )
+    {
+        if (direction.x < -0.01f)
+        {
+            // Boss is moving LEFT.
+            SetBossMovingLeft(true);
+        }
+        else if (direction.x > 0.01f)
+        {
+            // Boss is moving RIGHT.
+            SetBossMovingLeft(false);
+        }
+    }
+
+    private void SetBossMovingLeft(
+        bool movingLeft
+    )
+    {
+        if (bossUsesLeftRightAnimations)
+        {
+            // --------------------------------
+            // BOSS WITH TWO ANIMATIONS
+            // --------------------------------
+
+            if (bossAnimator != null)
+            {
+                bossAnimator.SetBool(
+                    movingLeftParameter,
+                    movingLeft
+                );
+            }
+
+            // Do NOT flip the SpriteRenderer.
+            // The Animator handles the direction.
+            return;
+        }
+
+        // --------------------------------
+        // BOSS WITH ONLY ONE ANIMATION
+        // --------------------------------
+
+        if (
+            flipSpriteForSingleAnimationBoss &&
+            bossSpriteRenderer != null
+        )
+        {
+            // This assumes the single animation
+            // naturally faces RIGHT.
+            bossSpriteRenderer.flipX =
+                movingLeft;
+        }
+    }
+
     private bool IsArenaLevel()
     {
-        return SceneManager.GetActiveScene().name == "Arena";
+        return
+            SceneManager.GetActiveScene().name ==
+            "Arena";
     }
 
     private Vector2 GetRandomOffscreenPosition()
     {
         float height =
-            mainCamera.orthographicSize * 2f;
+            mainCamera.orthographicSize *
+            2f;
 
         float width =
-            height * mainCamera.aspect;
+            height *
+            mainCamera.aspect;
 
         float x =
             Random.Range(
@@ -401,6 +550,7 @@ public class BossManager : MonoBehaviour
                         mainCamera.transform.position.x -
                         width / 2f -
                         spawnMargin,
+
                         mainCamera.transform.position.y +
                         y
                     );
@@ -414,6 +564,7 @@ public class BossManager : MonoBehaviour
                         mainCamera.transform.position.x +
                         width / 2f +
                         spawnMargin,
+
                         mainCamera.transform.position.y +
                         y
                     );
@@ -426,6 +577,7 @@ public class BossManager : MonoBehaviour
                     new Vector2(
                         mainCamera.transform.position.x +
                         x,
+
                         mainCamera.transform.position.y -
                         height / 2f -
                         spawnMargin
@@ -439,6 +591,7 @@ public class BossManager : MonoBehaviour
                     new Vector2(
                         mainCamera.transform.position.x +
                         x,
+
                         mainCamera.transform.position.y +
                         height / 2f +
                         spawnMargin
@@ -456,8 +609,16 @@ public class BossManager : MonoBehaviour
             "[BossManager] Boss defeated!"
         );
 
+        // Switch back to the menu music.
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.PlayMenuMusic();
+        }
+
+        // Stop gameplay.
         Time.timeScale = 0f;
 
+        // Show victory screen.
         if (GameEndUI.Instance != null)
         {
             GameEndUI.Instance.ShowVictory();

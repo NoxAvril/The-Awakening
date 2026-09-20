@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,10 @@ public class CharacterCard : MonoBehaviour
     public TMP_Text characterName;
     public TMP_Text startingWeapon;
     public TMP_Text stats;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    [Header("UI Image Reference")]
+    public Image characterIcon;
+
     void Start()
     {
         CharacterData data = characterData;
@@ -18,6 +22,17 @@ public class CharacterCard : MonoBehaviour
             return;
 
         characterName.text = data.characterName;
+
+        // Automatically use the first frame of idle sprites as the portrait icon
+        if (characterIcon != null && data.idleSprites != null && data.idleSprites.Length > 0)
+        {
+            characterIcon.sprite = data.idleSprites[0];
+            characterIcon.gameObject.SetActive(true);
+        }
+        else if (characterIcon != null)
+        {
+            characterIcon.gameObject.SetActive(false);
+        }
 
         if (data.startingWeapon != null)
         {
@@ -42,6 +57,11 @@ public class CharacterCard : MonoBehaviour
         PlayerPrefs.Save();
 
         string selectedLevel = MainMenu.GetSelectedLevel();
+
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.PlayGameplayMusic();
+        }
 
         Debug.Log("Loading level: " + selectedLevel);
 

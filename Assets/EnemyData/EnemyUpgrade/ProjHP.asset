@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ProjHP
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: proj_hp
-  upgradeName: Projecctile Vitality
-  description: Increase Projectile enemy HP by 7.
+  upgradeName: Mi-Go's Spirit
+  description: Increase Mi-Go's enemy HP by 7.
   icon: {fileID: -902086654454736923, guid: ea2fe36c8be2d814f9ec15f9574caa4e, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

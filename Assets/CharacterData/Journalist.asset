@@ -14,6 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Journalist
   startingWeapon: {fileID: 6841326242922978563, guid: 5a3d0c22ee6d9a04296420855a1ce952, type: 3}
+  idleSprites:
+  - {fileID: 6301408936898436108, guid: 3130c292eb6e7b041a35bee707511754, type: 3}
+  - {fileID: 4342587939831648481, guid: 3130c292eb6e7b041a35bee707511754, type: 3}
+  - {fileID: 4872832506131544357, guid: 3130c292eb6e7b041a35bee707511754, type: 3}
+  - {fileID: 5534288511181436601, guid: 3130c292eb6e7b041a35bee707511754, type: 3}
+  - {fileID: -5149479133622227263, guid: 3130c292eb6e7b041a35bee707511754, type: 3}
+  - {fileID: 1742768393022067220, guid: 3130c292eb6e7b041a35bee707511754, type: 3}
+  - {fileID: 8181456655091080013, guid: 3130c292eb6e7b041a35bee707511754, type: 3}
+  - {fileID: -7777442392419037484, guid: 3130c292eb6e7b041a35bee707511754, type: 3}
+  movingSprites:
+  - {fileID: -5258494179868273121, guid: 562fcf3b2fd956d45ab8d3de68f1fed2, type: 3}
+  - {fileID: -8132075029357030939, guid: 562fcf3b2fd956d45ab8d3de68f1fed2, type: 3}
+  - {fileID: 8415127751645970276, guid: 562fcf3b2fd956d45ab8d3de68f1fed2, type: 3}
+  - {fileID: -4528907953254217708, guid: 562fcf3b2fd956d45ab8d3de68f1fed2, type: 3}
+  - {fileID: -5327340033969243308, guid: 562fcf3b2fd956d45ab8d3de68f1fed2, type: 3}
+  - {fileID: 3265048618865749454, guid: 562fcf3b2fd956d45ab8d3de68f1fed2, type: 3}
+  - {fileID: 3926760215094764127, guid: 562fcf3b2fd956d45ab8d3de68f1fed2, type: 3}
+  animatorController: {fileID: 9100000, guid: 5a1898d2b619ff840a876280dce3c8aa, type: 2}
   movespeed: 7
   critChance: 0
   critMultiplier: 2

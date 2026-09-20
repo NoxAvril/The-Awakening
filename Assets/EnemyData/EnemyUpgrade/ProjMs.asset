@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ProjMs
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: proj_ms
-  upgradeName: Projectile Speed
-  description: Increase Projectile enemy movementspeed by 0.3.
+  upgradeName: Mi-Go's Floaters
+  description: Increase Mi-Go's movementspeed by 0.3.
   icon: {fileID: 4378920111037482446, guid: 9c76c8bbc8dc3214f8486ecdda82f747, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

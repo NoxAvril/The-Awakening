@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MageEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: Unlock_mage
-  upgradeName: Mage
-  description: A new enemy that shoot projectile.
-  icon: {fileID: 0}
+  upgradeName: Elder Thing
+  description: Add Elder Thing that shoot projectile.
+  icon: {fileID: -2197000080843132270, guid: e2af2090485e27b45aedd46d0b21fdb4, type: 3}
   type: 0
   enemyPrefab: {fileID: 3100299601003317396, guid: 353ed9bc39b1d434ab2dc7f34d65ff80, type: 3}
   targetEnemyPrefab: {fileID: 0}

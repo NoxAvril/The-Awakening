@@ -14,6 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Detective
   startingWeapon: {fileID: -8751479438112089160, guid: a4d9560e9e62db14da4c56376a41f3fc, type: 3}
+  idleSprites:
+  - {fileID: 7844159778248868330, guid: d3756889991c6c842834a00f78c156d7, type: 3}
+  - {fileID: 5035907763806189039, guid: d3756889991c6c842834a00f78c156d7, type: 3}
+  - {fileID: 3251665656935132768, guid: d3756889991c6c842834a00f78c156d7, type: 3}
+  - {fileID: -785656488447304894, guid: d3756889991c6c842834a00f78c156d7, type: 3}
+  - {fileID: 8119284203462150333, guid: d3756889991c6c842834a00f78c156d7, type: 3}
+  - {fileID: -965614871252433795, guid: d3756889991c6c842834a00f78c156d7, type: 3}
+  - {fileID: -1110214169241771066, guid: d3756889991c6c842834a00f78c156d7, type: 3}
+  movingSprites:
+  - {fileID: -3990065554440093285, guid: 5a74e2d7f8c816540bfaa3e38c390228, type: 3}
+  - {fileID: 3063999742547390267, guid: 5a74e2d7f8c816540bfaa3e38c390228, type: 3}
+  - {fileID: -6251114641178850955, guid: 5a74e2d7f8c816540bfaa3e38c390228, type: 3}
+  - {fileID: 8001856598717128540, guid: 5a74e2d7f8c816540bfaa3e38c390228, type: 3}
+  - {fileID: -2138702855683943349, guid: 5a74e2d7f8c816540bfaa3e38c390228, type: 3}
+  - {fileID: -2966388168708393002, guid: 5a74e2d7f8c816540bfaa3e38c390228, type: 3}
+  animatorController: {fileID: 9100000, guid: 9ecf4d0512d56784ab2bbb6d3515d83d, type: 2}
   movespeed: 5
   critChance: 5
   critMultiplier: 2.5

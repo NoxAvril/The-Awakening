@@ -72,17 +72,14 @@ public class ExpGem : MonoBehaviour
         if (expValue >= 100)
         {
             spriteRenderer.sprite = tier3Sprite != null ? tier3Sprite : generatedBookSprite;
-            spriteRenderer.color = new Color(1f, 0.84f, 0f); // Gold / Yellow
         }
         else if (expValue >= 10)
         {
             spriteRenderer.sprite = tier2Sprite != null ? tier2Sprite : generatedBookSprite;
-            spriteRenderer.color = new Color(0.2f, 0.6f, 1f); // Blue
         }
         else
         {
             spriteRenderer.sprite = tier1Sprite != null ? tier1Sprite : generatedBookSprite;
-            spriteRenderer.color = new Color(0.2f, 0.9f, 0.3f); // Green
         }
     }
 

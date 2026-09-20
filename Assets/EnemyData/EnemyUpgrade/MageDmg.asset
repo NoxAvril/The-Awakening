@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MageDmg
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: mage_dmg
-  upgradeName: Mage Damage
-  description: Increase Mage enemy collision damage by 2.
+  upgradeName: 'Elder Thing''s Rampage '
+  description: Increase Elder Thing's collision damage by 2.
   icon: {fileID: 3939895358237999961, guid: c949b1855c52f7247992c44aa0830130, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

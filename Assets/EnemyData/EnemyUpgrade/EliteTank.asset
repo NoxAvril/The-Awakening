@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EliteTank
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: elite_tank
-  upgradeName: Elite Tank Enemy
-  description: Adds 3 Elite Tank Enemy to future spawns.
-  icon: {fileID: 0}
+  upgradeName: Elder Shoggoth
+  description: Add 3 Elite Shoggoth to future spawns.
+  icon: {fileID: -7620671396667263542, guid: 621ae32b7ec26cd4e8411712b4f91e31, type: 3}
   type: 2
   enemyPrefab: {fileID: 0}
   targetEnemyPrefab: {fileID: 5649299403573654980, guid: 732f073b3dc842243920cd6412b2769f, type: 3}

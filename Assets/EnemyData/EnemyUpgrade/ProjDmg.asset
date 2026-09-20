@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ProjDmg
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: proj_dmg
-  upgradeName: Projectile Damage
-  description: Increase Projectile enemy collision damage by 2.
+  upgradeName: Mi-Go's Tentacles
+  description: Increase Mi-Go's collision damage by 2.
   icon: {fileID: 3939895358237999961, guid: c949b1855c52f7247992c44aa0830130, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 7914176630459532088}
   - component: {fileID: -1669427006512731942}
   - component: {fileID: 6456941087593722259}
+  - component: {fileID: 4495526817360465776}
+  - component: {fileID: -7807559459841925247}
   m_Layer: 0
   m_Name: Chaser
   m_TagString: Enemy
@@ -112,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyFollow
   player: {fileID: 0}
   enemyData: {fileID: 11400000, guid: 5f0298dd64eeed14eaee5379e3c66950, type: 2}
+  movementEnabled: 1
 --- !u!114 &7763743186358498111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,3 +228,41 @@ MonoBehaviour:
   range: 0
   baseExpReward: 0
   currentExpReward: 0
+--- !u!95 &4495526817360465776
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5649299403573654980}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4228fe46b8f762408e846c81758b993, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &-7807559459841925247
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5649299403573654980}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: f7f6635c546aedc45b3413720d22b4f4, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

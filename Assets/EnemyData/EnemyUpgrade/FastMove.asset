@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FastMove
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: fast_ms
-  upgradeName: Fast Speed
-  description: Increase fast enemy movement speed by 0.4
+  upgradeName: Nightgaunt's Wings
+  description: Increase Nightgaunt's movement speed by 0.4
   icon: {fileID: 4378920111037482446, guid: 9c76c8bbc8dc3214f8486ecdda82f747, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

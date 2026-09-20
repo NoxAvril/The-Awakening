@@ -55,7 +55,11 @@ MonoBehaviour:
   piercing: 0
   bouncing: 0
   areaDamage: 1
+  attackSound: {fileID: 8300000, guid: 94582f41d79a54b4eaec7a8b1307fc7e, type: 3}
+  attackSoundVolume: 0.8
+  audioSource: {fileID: 0}
   indicatorPrefab: {fileID: 483406347361510941, guid: 7c86d8cff40f5ab4d947d85b5bb6ff97, type: 3}
   detectionRadius: 0.8
-  mineSprite: {fileID: 0}
+  mineSprite: {fileID: 21300000, guid: e6c29b3028131ef40b7b67ff8a62fa18, type: 3}
+  explosionIndicatorDuration: 0.25
   maxActiveMines: 2

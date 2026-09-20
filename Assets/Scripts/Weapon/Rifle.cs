@@ -14,37 +14,60 @@ public class Rifle : GunWeapon
     {
         base.Update();
 
-        if (bulletsRemaining > 0)
+        if (
+            bulletsRemaining > 0
+        )
         {
-            bulletTimer -= Time.deltaTime;
+            bulletTimer -=
+                Time.deltaTime;
 
-            if (bulletTimer <= 0f)
+            if (
+                bulletTimer <= 0f
+            )
             {
-                FireBullet(fireDirection);
+                FireBullet(
+                    fireDirection,
+                    true
+                );
 
                 bulletsRemaining--;
 
-                if (bulletsRemaining > 0)
+                if (
+                    bulletsRemaining > 0
+                )
                 {
-                    bulletTimer = bulletInterval;
+                    bulletTimer =
+                        bulletInterval;
                 }
             }
-        }  
+        }
     }
 
     public override void Attack()
     {
-        fireDirection = getAimDirection();
+        fireDirection =
+            getAimDirection();
 
-        bulletsRemaining = bulletCount;
-        
-        FireBullet(fireDirection);
+        bulletsRemaining =
+            Mathf.Clamp(
+                bulletCount,
+                1,
+                maxBulletCount
+            );
+
+        FireBullet(
+            fireDirection,
+            true
+        );
 
         bulletsRemaining--;
 
-        if (bulletsRemaining > 0)
+        if (
+            bulletsRemaining > 0
+        )
         {
-            bulletTimer = bulletInterval;
+            bulletTimer =
+                bulletInterval;
         }
     }
 }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MageHP
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: mage_hp
-  upgradeName: Mage Vitility
-  description: Increase Mage enemy HP by 5.
+  upgradeName: Elder Thing's Stature
+  description: Increase Elder Thing's HP by 5.
   icon: {fileID: -902086654454736923, guid: ea2fe36c8be2d814f9ec15f9574caa4e, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

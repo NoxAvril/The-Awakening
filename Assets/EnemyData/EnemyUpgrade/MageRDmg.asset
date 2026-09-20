@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MageRDmg
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: mage_r_dmg
-  upgradeName: Mage Range Damage
-  description: Increase Mage enemy range damage by 5.
+  upgradeName: Elder Thing's Spore
+  description: Increase Elder Thing's range damage by 5.
   icon: {fileID: -533871868093975521, guid: 4b449c3a14f979c45b354a4ef4cae5b6, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

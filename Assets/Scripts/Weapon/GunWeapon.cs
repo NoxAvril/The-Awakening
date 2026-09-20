@@ -13,7 +13,10 @@ public class GunWeapon : Weapon
     {
         base.Update();
 
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        if (
+            Mouse.current != null &&
+            Mouse.current.leftButton.wasPressedThisFrame
+        )
         {
             aimMode = !aimMode;
         }
@@ -21,17 +24,51 @@ public class GunWeapon : Weapon
 
     public override void Attack()
     {
-        FireBullet(getAimDirection());
+        FireBullet(
+            getAimDirection(),
+            true
+        );
     }
 
-    protected void FireBullet(Vector2 direction)
+    protected void FireBullet(
+        Vector2 direction
+    )
     {
-        if (bulletPrefab == null || playerMovement == null) return;
+        FireBullet(
+            direction,
+            true
+        );
+    }
 
-        Vector2 spawnPosition = (Vector2)playerMovement.transform.position + direction * bulletSpawnDistance;
-        GameObject bulletObject = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+    protected void FireBullet(
+        Vector2 direction,
+        bool playSound
+    )
+    {
+        if (
+            bulletPrefab == null ||
+            playerMovement == null
+        )
+        {
+            return;
+        }
 
-        if (bulletObject.TryGetComponent<Bullet>(out var bullet))
+        Vector2 spawnPosition =
+            (Vector2)playerMovement.transform.position +
+            direction *
+            bulletSpawnDistance;
+
+        GameObject bulletObject =
+            Instantiate(
+                bulletPrefab,
+                spawnPosition,
+                Quaternion.identity
+            );
+
+        if (
+            bulletObject.TryGetComponent<Bullet>(
+                out var bullet
+            ))
         {
             bullet.Setup(
                 direction,
@@ -45,19 +82,40 @@ public class GunWeapon : Weapon
                 knockback,
                 stun
             );
+
+            if (playSound)
+            {
+                bullet.SetFirstMovementCallback(
+                    PlayAttackSound
+                );
+            }
         }
     }
 
     protected Vector2 getAimDirection()
     {
-        if (aimMode && Mouse.current != null)
+        if (
+            aimMode &&
+            Mouse.current != null
+        )
         {
-            Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
-            Vector2 playerScreenPosition = Camera.main.WorldToScreenPoint(playerMovement.transform.position);
-            return (mouseScreenPosition - playerScreenPosition).normalized;
+            Vector2 mouseScreenPosition =
+                Mouse.current.position.ReadValue();
+
+            Vector2 playerScreenPosition =
+                Camera.main.WorldToScreenPoint(
+                    playerMovement.transform.position
+                );
+
+            return (
+                mouseScreenPosition -
+                playerScreenPosition
+            ).normalized;
         }
 
-        if (playerMovement != null)
+        if (
+            playerMovement != null
+        )
         {
             return playerMovement.lastMoveDirection;
         }

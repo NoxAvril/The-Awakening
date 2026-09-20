@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EliteMage
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: elite_mage
-  upgradeName: Elite Mage Enemy
-  description: Adds 3 Elite Basic Enemy to future spawns.
-  icon: {fileID: 0}
+  upgradeName: Ancient Elder Thing
+  description: Add 3 Elite Elder Thing to future spawns.
+  icon: {fileID: -2197000080843132270, guid: e2af2090485e27b45aedd46d0b21fdb4, type: 3}
   type: 2
   enemyPrefab: {fileID: 0}
   targetEnemyPrefab: {fileID: 3100299601003317396, guid: 353ed9bc39b1d434ab2dc7f34d65ff80, type: 3}

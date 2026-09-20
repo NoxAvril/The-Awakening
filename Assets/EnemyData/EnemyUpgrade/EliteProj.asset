@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EliteProj
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: elite_proj
-  upgradeName: Elite Projectile Enemy
-  description: Adds 3 Elite Projectile Enemy to future spawns.
-  icon: {fileID: 0}
+  upgradeName: Elder Mi-Go
+  description: Add 3 Elite Mi-Go to future spawns.
+  icon: {fileID: 6897906524128268552, guid: ad8accbf86bccb34181b23c3edcc25ab, type: 3}
   type: 2
   enemyPrefab: {fileID: 0}
   targetEnemyPrefab: {fileID: 3100299601003317396, guid: 97ec7ba9f4d45844ebd12fd55ac37bf0, type: 3}

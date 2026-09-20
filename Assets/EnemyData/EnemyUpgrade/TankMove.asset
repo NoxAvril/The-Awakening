@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TankMove
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: tank_ms
-  upgradeName: Tank Speed
-  description: Increase Tank enemy movement speed by 0.2.
+  upgradeName: Shoggoth's Sliters
+  description: Increase Shoggoth's movement speed by 0.2.
   icon: {fileID: 4378920111037482446, guid: 9c76c8bbc8dc3214f8486ecdda82f747, type: 3}
   type: 1
   enemyPrefab: {fileID: 0}

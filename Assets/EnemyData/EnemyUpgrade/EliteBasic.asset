@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EliteBasic
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUpgradeData
   id: elite_basic
-  upgradeName: Elite Basic Enemy
-  description: Adds 5 Elite Basic Enemy to future spawns.
-  icon: {fileID: 0}
+  upgradeName: Elder Deep One
+  description: Add 5 Elite Deep One to future spawns.
+  icon: {fileID: -435482679983138210, guid: 70478f16b5d1bfa438625e0223286a3c, type: 3}
   type: 2
   enemyPrefab: {fileID: 0}
   targetEnemyPrefab: {fileID: 6765678486695119926, guid: f99e68718b034e54f9114353143ff0f1, type: 3}
